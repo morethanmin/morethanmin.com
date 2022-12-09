@@ -1,5 +1,5 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
-const CJK = require('./src/lib/cjk')
+const CJK = require('./src/libs/cjk')
 const fontSansCJK = !CJK()
   ? []
   : [`"Noto Sans CJK ${CJK()}"`, `"Noto Sans ${CJK()}"`]
@@ -9,7 +9,7 @@ const fontSerifCJK = !CJK()
 
 module.exports = {
   mode: 'jit',
-  purge: ['./src/pages/**/*.js', './src/components/**/*.jsx', './src/layouts/**/*.jsx'],
+  purge: ['./src/pages/**/*.js', './src/components/**/*.jsx', './src/**/*.jsx'],
   darkMode: 'class',
   theme: {
     extend: {
