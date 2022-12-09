@@ -1,8 +1,8 @@
 const CONFIG = {
   // profile setting
   profile: {
-    name: 'morethanmin',
-    image: ['/profile.png', '/profile-hover.png'],
+    name: 'morethan-log',
+    image: '/profile.png',
     discription: 'frontend developer',
     linkedin: 'morethanmin',
     email: 'morethanmin.dev@gmail.com',
@@ -17,13 +17,12 @@ const CONFIG = {
   ],
   // blog setting
   blog: {
-    title: '🦁 멋쟁이 상민처럼', // blog 타이틀과 
-    description: '개발자로 일하면서 배운 내용들을 기록합니다.',
+    title: 'morethan-log',
+    description: 'welcome to morethan-log!',
   },
 
   // CONFIG configration
-  link: 'https://morethanmin.web.app',
-  // link: 'https://morethan-log.vercel.app',
+  link: 'https://morethan-log.vercel.app',
   since: 2022, // If leave this empty, current year will be used.
   lang: 'ko-KR', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   postsPerPage: 10,
@@ -55,10 +54,11 @@ const CONFIG = {
   utterances: {
     enable: true,
     config: {
-      repo: 'morethanmin/morethan-log'
+      repo: 'morethanmin/morethan-log',
+      'issue-term': 'og:title',
+      label: '💬Utterances',
     }
   },
-
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
 }
 module.exports = CONFIG
