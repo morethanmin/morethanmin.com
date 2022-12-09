@@ -1,7 +1,7 @@
 const CONFIG = {
   // profile setting
   profile: {
-    name: 'morethan-log',
+    name: 'morethanmin',
     image: '/profile.png',
     discription: 'frontend developer',
     linkedin: 'morethanmin',
@@ -17,8 +17,8 @@ const CONFIG = {
   ],
   // blog setting
   blog: {
-    title: 'morethan-log',
-    description: 'welcome to morethan-log!',
+    title: '멋쟁이 상민처럼',
+    description: '개발자로 일하면서 배운 내용들을 기록합니다.',
   },
 
   // CONFIG configration
@@ -54,7 +54,7 @@ const CONFIG = {
   utterances: {
     enable: true,
     config: {
-      repo: 'morethanmin/morethan-log',
+      repo: 'morethanmin/my-blog',
       'issue-term': 'og:title',
       label: '💬Utterances',
     }
