@@ -24,7 +24,7 @@ const CONFIG = {
   // CONFIG configration
   link: 'https://morethanmin.web.app',
   since: 2022, // If leave this empty, current year will be used.
-  lang: 'ko-KR', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
+  lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   postsPerPage: 10,
   ogImageGenerateURL: 'https://og-image-korean.vercel.app', // The link to generate OG image, don't end with a slash
   seo: {
@@ -40,15 +40,15 @@ const CONFIG = {
 
   // plugin configuration
   googleAnalytics: {
-    enable: true,
+    enable: false,
     config: {
-      measurementId: 'G-9N3FE0117Q'
+      measurementId: '' // ex. G-9N3FE0117Q
     }
   },
   googleSearchConsole: {
-    enable: true,
+    enable: false,
     config: {
-      siteVerification: 'qvdR1gXMirk_DCUOKPgRnxu2x6fqSPrquYnEZZMjR9w'
+      siteVerification: '' // ex. qvdR1gXMirk_DCUOKPgRnxu2x6fqSPrquYnEZZMjR9w
     }
   },
   utterances: {
@@ -56,7 +56,7 @@ const CONFIG = {
     config: {
       repo: 'morethanmin/my-blog',
       'issue-term': 'og:title',
-      label: '💬Utterances',
+      label: '💬 Utterances',
     }
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
