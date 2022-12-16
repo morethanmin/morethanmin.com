@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://morethanmin.web.app
+Host: https://morethanmin.com
 
 # Sitemaps
-Sitemap: https://morethanmin.web.app/sitemap.xml
+Sitemap: https://morethanmin.com/sitemap.xml
