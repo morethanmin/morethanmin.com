@@ -11,9 +11,7 @@
     "build": "next build",
     "start": "next start",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "lint": "next lint",
-    "deploy:dev": "firebase login --no-localhost && firebase deploy --only hosting:morethanmin",
-    "deploy:prod": "firebase deploy --only hosting:morethanmin --token $FIREBASE_TOKEN"
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": ">=0.21.1",
