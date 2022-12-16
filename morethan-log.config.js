@@ -40,9 +40,9 @@ const CONFIG = {
 
   // plugin configuration
   googleAnalytics: {
-    enable: false,
+    enable: true,
     config: {
-      measurementId: '' // ex. G-9N3FE0117Q
+      measurementId: 'G-HGPG08YYC4' // ex. G-9N3FE0117Q
     }
   },
   googleSearchConsole: {
