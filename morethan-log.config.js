@@ -19,7 +19,7 @@ const CONFIG = {
   blog: {
     title: '멋쟁이 상민처럼',
     description: '개발자로 일하면서 배운 내용들을 기록합니다.',
-    theme: 'auto' // ['light', 'dark', 'auto']
+    theme: 'light' // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration
