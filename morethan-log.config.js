@@ -2,7 +2,7 @@ const CONFIG = {
   // profile setting
   profile: {
     name: 'morethanmin',
-    image: '/profile.png',
+    image: '/avatar.svg',  // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     discription: 'frontend developer',
     linkedin: 'morethanmin',
     email: 'morethanmin.dev@gmail.com',
@@ -19,6 +19,7 @@ const CONFIG = {
   blog: {
     title: '멋쟁이 상민처럼',
     description: '개발자로 일하면서 배운 내용들을 기록합니다.',
+    theme: 'auto' // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration
