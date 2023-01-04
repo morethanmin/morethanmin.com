@@ -1,13 +1,14 @@
 const CONFIG = {
-  // profile setting
+  // profile setting (required)
   profile: {
     name: 'morethanmin',
     image: '/avatar.svg',  // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    discription: 'frontend developer',
-    linkedin: 'morethanmin',
+    role: 'frontend developer',
+    bio: 'I develop everything using node.',
     email: 'morethanmin.dev@gmail.com',
+    linkedin: 'morethanmin',
     github: 'morethanmin',
-    instagram: 'more_dev_min',
+    instagram: '',
   },
   projects: [
     {
@@ -15,7 +16,7 @@ const CONFIG = {
       href: 'https://untilled.web.app'
     }
   ],
-  // blog setting
+  // blog setting (required)
   blog: {
     title: '멋쟁이 상민처럼',
     description: '개발자로 일하면서 배운 내용들을 기록합니다.',
@@ -31,12 +32,12 @@ const CONFIG = {
     keywords: ['Blog', 'Website', 'Notion'],
   },
 
-  // notion configuration
+  // notion configuration (required)
   notionConfig: {
     pageId: process.env.NOTION_PAGE_ID,
   },
 
-  // plugin configuration
+  // plugin configuration (optional)
   googleAnalytics: {
     enable: true,
     config: {
@@ -46,7 +47,7 @@ const CONFIG = {
   googleSearchConsole: {
     enable: false,
     config: {
-      siteVerification: '' // ex. qvdR1gXMirk_DCUOKPgRnxu2x6fqSPrquYnEZZMjR9w
+      siteVerification: process.env.GOOGLE_SITE_VERIFICATION || ''
     }
   },
   utterances: {

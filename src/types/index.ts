@@ -15,6 +15,7 @@ export type TPost = {
   status: string[]
   createdTime: string
   fullWidth: boolean
+  thumbnail?: string
 }
 
 export type TPosts = TPost[]
@@ -22,3 +23,5 @@ export type TPosts = TPost[]
 export type TTags = {
   [tagName: string]: number
 }
+
+export type ThemeType = 'dark' | 'light'

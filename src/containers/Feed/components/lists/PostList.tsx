@@ -1,5 +1,5 @@
-import PostCard from '@/src/components/PostCard'
-import { TPosts, TTags } from '@/src/types/post'
+import PostCard from '@components/PostCard'
+import { TPosts, TTags } from '@/src/types'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -14,7 +14,7 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
   const [filteredPosts, setFilteredPosts] = useState(posts)
 
   const currentTag = `${router.query.tag || ``}` || 'All'
-  const currentOrder = `${router.query.order || ``}` || 'asc'
+  const currentOrder = `${router.query.order || ``}` || 'desc'
 
   useEffect(() => {
     setFilteredPosts(() => {
@@ -33,7 +33,7 @@ const PostList: React.FC<Props> = ({ q, posts, tags }) => {
         )
       }
       // order
-      if (currentOrder !== 'asc') {
+      if (currentOrder !== 'desc') {
         filteredPosts = filteredPosts.reverse()
       }
 
