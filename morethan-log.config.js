@@ -12,8 +12,8 @@ const CONFIG = {
   },
   projects: [
     {
-      name: `morethanmin's blog`,
-      href: 'https://morethanmin.com'
+      name: 'Team Untilled',
+      href: 'https://untilled.web.app'
     }
   ],
   // blog setting (required)
