@@ -1,16 +1,15 @@
-import CONFIG from 'morethan-log.config'
-import { NotionAPI } from 'notion-client'
-import { idToUuid } from 'notion-utils'
-import getAllPageIds from './getAllPageIds'
-import getPageProperties from './getPageProperties'
-import filterPublishedPosts from './filterPublishedPosts'
-import { TPosts } from '@/src/types'
+import CONFIG from "site.config"
+import { NotionAPI } from "notion-client"
+import { idToUuid } from "notion-utils"
+import getAllPageIds from "./getAllPageIds"
+import getPageProperties from "./getPageProperties"
+import { TPosts } from "@/src/types"
 
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
-export async function getAllPosts({ includePages = false }) {
+export async function getPosts() {
   let id = CONFIG.notionConfig.pageId as string
   const api = new NotionAPI()
   const response = await api.getPage(id)
@@ -23,8 +22,8 @@ export async function getAllPosts({ includePages = false }) {
 
   // Check Type
   if (
-    rawMetadata?.type !== 'collection_view_page' &&
-    rawMetadata?.type !== 'collection_view'
+    rawMetadata?.type !== "collection_view_page" &&
+    rawMetadata?.type !== "collection_view"
   ) {
     return []
   } else {
@@ -44,15 +43,12 @@ export async function getAllPosts({ includePages = false }) {
       data.push(properties)
     }
 
-    // remove all the the items doesn't meet requirements
-    const posts = filterPublishedPosts({ posts: data, includePages })
-
     // Sort by date
-    posts.sort((a: any, b: any) => {
+    data.sort((a: any, b: any) => {
       const dateA: any = new Date(a?.date?.start_date || a.createdTime)
       const dateB: any = new Date(b?.date?.start_date || b.createdTime)
       return dateB - dateA
     })
-    return posts as TPosts
+    return data as TPosts
   }
 }

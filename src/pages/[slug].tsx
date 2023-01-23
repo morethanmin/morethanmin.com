@@ -1,22 +1,28 @@
-import PostDetail from '@containers/PostDetail'
-import { getAllPosts, getPostBlocks } from '@libs/notion'
-import Layout from '@components/Layout'
-import CONFIG from '../../morethan-log.config'
-import { NextPageWithLayout } from './_app'
-import { TPost } from '../types'
-import CustomError from '../containers/CustomError'
+import Detail from "@/src/containers/Detail"
+import { getPosts, getPostBlocks, filterPosts } from "@libs/notion"
+import Layout from "@components/Layout"
+import CONFIG from "../../site.config"
+import { NextPageWithLayout } from "./_app"
+import { TPost } from "../types"
+import CustomError from "../containers/CustomError"
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ includePages: true })
+  const posts = await getPosts()
+  const filteredPost = filterPosts(posts, {
+    acceptStatus: ["Public", "PublicOnDetail"],
+    acceptType: ["Paper", "Post", "Page"],
+  })
+
   return {
-    paths: posts.map((row) => `/${row.slug}`),
+    paths: filteredPost.map((row) => `/${row.slug}`),
     fallback: true,
   }
 }
 
 export async function getStaticProps({ params: { slug } }: any) {
   try {
-    const posts = await getAllPosts({ includePages: true })
+    //includePages: true
+    const posts = await getPosts()
     const post = posts.find((t) => t.slug === slug)
     const blockMap = await getPostBlocks(post?.id!)
 
@@ -37,12 +43,12 @@ type Props = {
   blockMap: any
 }
 
-const PostDetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
+const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
   if (!post) return <CustomError />
-  return <PostDetail blockMap={blockMap} data={post} />
+  return <Detail blockMap={blockMap} data={post} />
 }
 
-PostDetailPage.getLayout = function getlayout(page) {
+DetailPage.getLayout = function getlayout(page) {
   const getImage = () => {
     if (page.props?.post.thumbnail) return page.props?.post.thumbnail
     if (CONFIG.ogImageGenerateURL)
@@ -56,14 +62,14 @@ PostDetailPage.getLayout = function getlayout(page) {
       return {
         title: CONFIG.blog.title,
         description: CONFIG.blog.description,
-        type: 'website',
+        type: "website",
         url: CONFIG.link,
       }
     }
     return {
       title: page.props.post.title || CONFIG.blog.title,
       date: new Date(
-        page.props.post.date?.start_date || page.props.post.createdTime || ''
+        page.props.post.date?.start_date || page.props.post.createdTime || ""
       ).toISOString(),
       image: getImage(),
       description: page.props.post.summary,
@@ -78,4 +84,4 @@ PostDetailPage.getLayout = function getlayout(page) {
   )
 }
 
-export default PostDetailPage
+export default DetailPage

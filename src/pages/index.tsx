@@ -1,22 +1,22 @@
-import { getAllPosts, getAllTagsFromPosts } from '@libs/notion'
-import Layout from '@components/Layout'
-import Feed from '@containers/Feed'
-import CONFIG from '../../morethan-log.config'
-import { NextPageWithLayout } from './_app'
-import { TPosts, TTags } from '../types'
+import { getPosts, getAllTagsFromPosts, filterPosts } from "@libs/notion"
+import Layout from "@components/Layout"
+import Feed from "@containers/Feed"
+import CONFIG from "../../site.config"
+import { NextPageWithLayout } from "./_app"
+import { TPosts, TTags } from "../types"
 
 export async function getStaticProps() {
   try {
-    const posts = await getAllPosts({ includePages: false })
-
-    const tags = getAllTagsFromPosts(posts)
+    const posts = await getPosts()
+    const filteredPost = filterPosts(posts)
+    const tags = getAllTagsFromPosts(filteredPost)
     return {
       props: {
         tags: {
-          All: posts.length,
+          All: filteredPost.length,
           ...tags,
         },
-        posts,
+        posts: filteredPost,
       },
       revalidate: 1,
     }
@@ -40,7 +40,7 @@ FeedPage.getLayout = function getlayout(page) {
       metaConfig={{
         title: CONFIG.blog.title,
         description: CONFIG.blog.description,
-        type: 'website',
+        type: "website",
         url: CONFIG.link,
       }}
     >
