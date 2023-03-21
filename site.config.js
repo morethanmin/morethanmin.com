@@ -12,7 +12,7 @@ const CONFIG = {
   },
   projects: [
     {
-      name: 'Team Untilled',
+      name: 'Untilled',
       href: 'https://untilled.web.app'
     }
   ],
