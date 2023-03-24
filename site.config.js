@@ -13,7 +13,7 @@ const CONFIG = {
   projects: [
     {
       name: 'Untilled',
-      href: 'https://untilled.web.app'
+      href: 'https://untilled.team'
     }
   ],
   // blog setting (required)
