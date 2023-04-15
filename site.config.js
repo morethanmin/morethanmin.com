@@ -18,9 +18,15 @@ const CONFIG = {
   ],
   // blog setting (required)
   blog: {
+<<<<<<< HEAD
     title: `morethanmin's log`,
     description: '개발자로 일하면서 배우거나 느낀 내용을 기록합니다.',
     theme: 'light' // ['light', 'dark', 'auto']
+=======
+    title: "morethan-log",
+    description: "welcome to morethan-log!",
+    theme: "auto", // ['light', 'dark', 'auto']
+>>>>>>> 7a30468a6d24d39f1f49ffab42dd20c5329de795
   },
 
   // CONFIG configration
@@ -47,7 +53,7 @@ const CONFIG = {
   googleSearchConsole: {
     enable: false,
     config: {
-      siteVerification: process.env.GOOGLE_SITE_VERIFICATION || "",
+      siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
     },
   },
   utterances: {
