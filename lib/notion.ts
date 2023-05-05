@@ -70,6 +70,7 @@ export const getDatabase = async (slug?: string) => {
     const cover_light =
       (properties.Cover.type === 'url' && properties.Cover.url) ||
       undefinedCover
+
     const cover_dark =
       (properties.Cover_dark.type === 'url' && properties.Cover_dark.url) ||
       cover_light
@@ -102,6 +103,7 @@ export const getDatabase = async (slug?: string) => {
       properties.OriginalCover.checkbox
     const colorTitle =
       properties.ColorTitle.type == 'checkbox' && properties.ColorTitle.checkbox
+
     return {
       id: result.id,
       slug: slug || '',

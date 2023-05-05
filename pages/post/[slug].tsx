@@ -39,6 +39,7 @@ import { Post } from '../../lib/types'
 import readingTime from 'reading-time'
 import PostSeo from '../../components/PostSeo'
 import { useRouter } from 'next/router'
+import { me } from '../../config/me'
 
 const PostPage: NextPage<{
   page: Post
@@ -97,12 +98,7 @@ const PostPage: NextPage<{
               </a>
             </Link>
             <div className="flex flex-row items-center mt-2 space-x-2 text-sm font-semibold text-true-gray-600 dark:text-true-gray-400">
-              <Moment
-                date={page.date}
-                fromNow
-                format="yyyy년 MM월 DD일"
-                local
-              />
+              <Moment date={page.date} fromNow format="yyyy.MM.DD" local />
               <p>·</p>
               <p>{text}</p>
               <p>·</p>
@@ -153,20 +149,9 @@ const PostPage: NextPage<{
         })}
         <div
           className={`flex flex-col mt-8 justify-between ${
-            page.originalCover ? 'md:flex-row-reverse md:items-center' : ''
+            page.originalCover ? 'md:flex-row md:items-center' : ''
           } gap-4 w-full`}
         >
-          {page.originalCover ? (
-            <a href="mailto:541297173@qq.com">
-              <div
-                className="inline-block px-2 py-1 space-x-2 text-sm rounded-full whitespace-nowrap bg-true-gray-100 text-true-gray-800"
-                dark="bg-true-gray-800 text-true-gray-100"
-              >
-                <FontAwesomeIcon icon={faPalette} />
-                <span>原创封面图，请勿盗用</span>
-              </div>
-            </a>
-          ) : null}
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 overflow-scroll scrollbar-hide">
             <TagsIcon />
@@ -190,7 +175,7 @@ const PostPage: NextPage<{
             ))}
           </div>
         </div>
-        <Licensing page={page} data-aos="fade-up" data-aos-duration="500" />
+        {/* <Licensing page={page} data-aos="fade-up" data-aos-duration="500" /> */}
         <Pagination
           pagination={pagination}
           data-aos="fade-up"

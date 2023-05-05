@@ -68,7 +68,7 @@ const PostMore: FC<{ posts: Post[] }> = ({ posts }) => {
                     date={post.date}
                     fromNow
                     // format="MMM DD, yy"
-                    format="yyyy년 MM월 DD일"
+                    format="yyyy.MM.DD"
                     local
                   />
                 </div>

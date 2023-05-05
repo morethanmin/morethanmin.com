@@ -157,7 +157,7 @@ const PostList: NextPage<{
                             className="block mt-2 text-sm font-semibold text-true-gray-600 dark:text-true-gray-400"
                             date={post.date}
                             fromNow
-                            format="yyyy년 MM월 DD일"
+                            format="yyyy.MM.DD"
                             local
                           />
                         </div>

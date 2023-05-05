@@ -40,10 +40,10 @@ const LocationMap = () => {
   let src
   switch (resolvedTheme) {
     case 'light':
-      src = '/static/images/map_light.png'
+      src = me.location.light
       break
     case 'dark':
-      src = '/static/images/map_dark.png'
+      src = me.location.dark
       break
     default:
       src = emptyImage
@@ -79,9 +79,8 @@ const Overview = () => {
       <div
         data-aos="fade-up"
         data-aos-duration="800"
-        className={`${style} bg-gradient-to-br from-[#ffa0a8] to-[#fffcdc] text-white`}
-        // style={{ background: "linear-gradient(135deg, #ffa0a8, #fffcdc)" }}
-        // style={{ background:"linear-gradient(90deg, rgba(255,167,69,1) 0%, rgba(254,134,159,1) 25%, rgba(239,122,200,1) 50%, rgba(160,131,237,1) 75%, rgba(67,174,255,1) 100%)"}}
+        className={`${style} bg-gradient-to-br from-[#a78bfa] to-[#d946ef] text-white`}
+        // className={`${style} bg-gradient-to-br from-[#ffa0a8] to-[#fffcdc] text-white`}
       >
         {/* <div className="flex flex-col justify-between"> */}
         <div className="text-xs font-semibold xs:text-lg md:text-xl">
@@ -90,8 +89,6 @@ const Overview = () => {
         <div className="text-lg font-semibold xs:text-2xl sm:text-3xl md:text-4xl whitespace-nowrap">
           {`I'm ${me.name}`}
         </div>
-        {/* </div> */}
-        {/* <img className="h-full rounded-full" src="/static/images/portrait.png" alt="portrait" /> */}
       </div>
       <div
         data-aos="fade-up"
@@ -104,7 +101,7 @@ const Overview = () => {
         </p>
         <div className="text-center">
           <p className="text-sm font-semibold xs:text-xl sm:text-2xl md:text-3xl">
-            Web & Mobile Development, Machine Learning
+            Web & Mobile Development, Open Source
           </p>
         </div>
         <p className="text-xs text-center sm:text-sm text-true-gray-100">
@@ -120,11 +117,11 @@ const Overview = () => {
         <div className="text-sm font-semibold xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl">
           <div>
             <span className="inline-block mr-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-              Developer
+              Frontend Developer
             </span>
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+            {/* <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
               Designer
-            </span>
+            </span> */}
           </div>
           <div>
             <span className="inline-block mr-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-yellow-500">
@@ -176,7 +173,7 @@ const Overview = () => {
           <span className="text-gray-600" dark="text-gray-400">
             Located in
           </span>{' '}
-          Seattle, WA
+          {me.location.name}
         </p>
         <LocationMap />
       </div>
@@ -329,7 +326,7 @@ const Overview = () => {
         <p
           className={`p-4 xs:p-4.5 sm:p-6 md:p-8 text-2xl font-semibold text-left sm:text-2xl md:text-3xl lg:text-4xl z-10 z-50  line-clamp-1`}
         >
-          Educations
+          Educations & Careers
         </p>
         <div className="flex flex-col justify-between h-full mt-1 mb-8 ">
           <div className="p-4 xs:p-4.5 sm:p-6 md:p-8 !pt-0 mb-10 sm:mb-8">
@@ -349,50 +346,52 @@ const Overview = () => {
           <div className="flex flex-col h-full items-center justify-end pb-4 xs:pb-4.5 sm:pb-6 md:pb-8">
             <div className="bg-true-gray-300 w-full h-1.5 relative">
               <div className="absolute px-4 xs:px-4.5 sm:px-6 md:px-8 grid grid-cols-10 w-full -top-6 lg:-top-10 items-end">
-                <div className="flex flex-col col-span-5 gap-1 lg:gap-2">
+                <div className="flex flex-col col-span-3 gap-1 lg:gap-2">
+                  <div className="h-4 lg:h-6" />
                   <a
                     className="filter hover:brightness-110"
-                    href="http://www.njupt.edu.cn/"
+                    href="https://www.mju.ac.kr/us"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <div
                       className={`h-4 lg:h-6 ${Colors['blue'].bg.msg} rounded-full w-full relative ${Colors['blue'].text.msg}`}
                       before="content-DEFAULT text-transparent absolute w-1/4 rounded-r-full h-full bg-blue-100 top-0 right-0"
-                      after="absolute content-🇨🇳NJUPT tracking-wide font-semibold absolute -top-6 left-2"
-                    />
-                  </a>
-                  <a
-                    className="filter hover:brightness-110"
-                    href="https://www.nyit.edu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div
-                      className={`h-4 lg:h-6 ${Colors['yellow'].bg.msg} ${Colors['yellow'].text.msg} rounded-full w-full relative`}
-                      after="absolute content-🇺🇸NYIT tracking-wide font-semibold absolute top-5 lg:top-6 left-2"
+                      after="absolute content-🇰🇷MJU(LOA) tracking-wide font-semibold absolute -top-6 left-2"
                     />
                   </a>
                 </div>
                 <div className="col-span-2" />
                 <a
-                  className="col-span-3 filter hover:brightness-130"
-                  href="https://www.northeastern.edu/"
+                  className="col-span-3 filter hover:brightness-110"
+                  href="https://linkareer.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div
+                    className={`h-4 lg:h-6 ${Colors['yellow'].bg.msg} ${Colors['yellow'].text.msg} rounded-full w-full relative`}
+                    after="absolute content-👟NUDGE tracking-wide font-semibold absolute -top-6 left-0"
+                  />
+                </a>
+                <a
+                  className="col-span-2 filter hover:brightness-110"
+                  href="https://www.heydealer.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <div
                     className={`h-4 lg:h-6 ${Colors['red'].bg.msg} ${Colors['red'].text.msg} rounded-full w-full relative`}
-                    after="absolute content-🇺🇸NEU tracking-wide font-semibold absolute -top-6 left-0"
+                    after="absolute content-🚙PRND tracking-wide font-semibold absolute -top-6 left-0"
                   />
                 </a>
               </div>
             </div>
+            {/* year bar */}
             <div className="w-full px-4 xs:px-4.5 sm:px-6 md:px-8 grid grid-cols-10 text-true-gray-300">
-              <div className="flex flex-col items-stretch justify-center col-span-4">
+              <div className="flex flex-col items-stretch justify-center col-span-2">
                 <div
                   className="mt-1 h-10 w-0.5 bg-true-gray-300 relative rounded-full"
-                  after="content-2016 absolute -bottom-6 -left-4"
+                  after="content-2019 absolute -bottom-6 -left-4"
                 />
               </div>
               <div className="flex flex-col items-end justify-center">
@@ -404,13 +403,13 @@ const Overview = () => {
               <div className="flex flex-col items-end justify-center col-span-2">
                 <div
                   className="mt-1 h-10 w-0.5 bg-true-gray-300 rounded-full relative"
-                  after="content-2021 absolute -bottom-6 -left-4"
+                  after="content-2022 absolute -bottom-6 -left-4"
                 />
               </div>
               <div className="flex flex-col items-end justify-center col-span-3">
                 <div
                   className="mt-1 h-10 w-0.5 bg-true-gray-300 rounded-full relative"
-                  after="content-2022 absolute -bottom-6 -left-6 sm:-left-4"
+                  after="content-2023 absolute -bottom-6 -left-4"
                 />
               </div>
             </div>
@@ -422,61 +421,63 @@ const Overview = () => {
         data-aos-duration="800"
         className={`${style} col-span-2`}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h1
-            className={`text-2xl sm:text-3xl font-bold ${Colors['blue'].text.msg}`}
-          >
-            Publication
-          </h1>
-          <a href={publication.link}>
-            <div
-              className={`${Colors['blue'].bg.msg} h-full text-xs text-white py-1 px-2 md:(px-3 py-2) rounded-full hover:scale-95 transform transition-all duration-200 ease-in-out font-normal`}
-            >
-              ↓ Download
-            </div>
-          </a>
-        </div>
-        <p className="mt-2 font-semibold leading-5 md:text-lg" lang="en">
-          {publication.title}
-        </p>
-        <div className="mb-2">
-          {publication.authors.map((author: any, index: number) => (
-            <div key={author.name} className="inline">
-              <span
-                className={`text-xs md:text-sm ${
-                  author.me
-                    ? 'text-true-gray-500 font-semibold'
-                    : 'text-true-gray-400'
-                }`}
-              >
-                {author.name}
-              </span>
-              <span className="text-xs text-true-gray-400 md:text-sm">
-                {index != publication.authors.length - 1 ? ', ' : ''}
-              </span>
+        <h1
+          className={`text-2xl sm:text-3xl font-bold ${Colors['blue'].text.msg} mb-4`}
+        >
+          Open Sources
+        </h1>
+        <div className="flex flex-col gap-8">
+          {me.publications.map((publication, idx) => (
+            <div key={idx}>
+              <div className="flex items-center justify-between">
+                <a
+                  className=" font-semibold leading-5 md:text-lg mt-2"
+                  href={publication.link}
+                >
+                  {publication.title}
+                </a>
+                <div className={`${Colors['blue'].text.msg} inline-block mt-3`}>
+                  <a
+                    className={`transition-all duration-200 ease-in-out bg-bottom bg-no-repeat bg-no-underline-size hover:bg-underline-size bg-underline-blue text-sm md:text-normal`}
+                    after="content-↗"
+                    href={publication.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{`Link `}</a>
+                </div>
+              </div>
+              <div className="mb-2">
+                {publication.authors.map((author: any, index: number) => (
+                  <div key={author.name} className="inline">
+                    <span
+                      className={`text-xs md:text-sm ${
+                        author.me
+                          ? 'text-true-gray-500 font-semibold'
+                          : 'text-true-gray-400'
+                      }`}
+                    >
+                      {author.name}
+                    </span>
+                    <span className="text-xs text-true-gray-400 md:text-sm">
+                      {index != publication.authors.length - 1 ? ', ' : ''}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="my-3">
+                {publication.tags.map((tag) => (
+                  <span
+                    className={`inline-block text-[9px] mr-1 md:(text-xs mb-1) ${
+                      Colors[tag.color].bg.normal
+                    } ${Colors[tag.color].text.msg} px-2 py-1 rounded-full`}
+                    key={tag.name}
+                  >
+                    {tag.name.toUpperCase()}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
-        </div>
-        <div className="my-3">
-          {publication.tags.map((tag: any) => (
-            <span
-              className={`inline-block text-[9px] mr-1 md:(text-xs mb-1) ${
-                Colors[tag.color].bg.normal
-              } ${Colors[tag.color].text.msg} px-2 py-1 rounded-full`}
-              key={tag.name}
-            >
-              {tag.name.toUpperCase()}
-            </span>
-          ))}
-        </div>
-        <div className={`${Colors['blue'].text.msg} inline-block mt-3`}>
-          <a
-            className={`transition-all duration-200 ease-in-out bg-bottom bg-no-repeat bg-no-underline-size hover:bg-underline-size bg-underline-blue text-sm md:text-normal`}
-            after="content-↗"
-            href={publication.website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >{`Learn more in our website `}</a>
         </div>
       </div>
     </div>

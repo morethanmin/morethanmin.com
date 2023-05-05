@@ -9,14 +9,18 @@ import { getDatabase } from '../lib/notion'
 import PostList from '../components/PostList'
 import { Post } from '../lib/types'
 
-import { getPlaiceholder } from "plaiceholder";
+import { getPlaiceholder } from 'plaiceholder'
 import { WidgetMeMedium, WidgetMeSmall } from '../components/widget/WidgetMe'
 import ListLayout from '../components/layout/ListLayout'
-import { WidgetOverViewMedium, WidgetOverViewSmall } from '../components/widget/WidgetOverview'
+import {
+  WidgetOverViewMedium,
+  WidgetOverViewSmall,
+} from '../components/widget/WidgetOverview'
 import { Media, MediaContextProvider } from '../components/utility/Breakpoints'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { me } from '../config/me'
+import { log } from 'console'
 
 // type PostResult = QueryDatabaseResponse['results'][number];
 
@@ -26,16 +30,16 @@ import { me } from '../config/me'
 
 const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const mainPosts = posts.slice(0, 17)
-  const router = useRouter();
-  const { locale } = router;
-  const description = "异次元de机智君的个人博客"
+  const router = useRouter()
+  const { locale } = router
+  const description = '异次元de机智君的个人博客'
   const featuredImage = {
     url: `${me.site}/static/images/og.png`,
     alt: description,
-}
+  }
   return (
     <>
-    {/* <NextSeo
+      {/* <NextSeo
         canonical={router.asPath}
         description={description}
         openGraph={{
@@ -46,8 +50,11 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
         }}
       /> */}
       <ListLayout>
-        <MediaContextProvider >
-          <Media greaterThanOrEqual="md" className="grid grid-cols-2 gap-6.5 lg:gap-10">
+        <MediaContextProvider>
+          <Media
+            greaterThanOrEqual="md"
+            className="grid grid-cols-2 gap-6.5 lg:gap-10"
+          >
             <WidgetMeMedium />
             <WidgetOverViewMedium posts={posts} />
           </Media>
@@ -67,12 +74,16 @@ export const getStaticProps: GetStaticProps = async () => {
   for (let post of db) {
     if (post) {
       try {
-        post.cover.blurLight = (await getPlaiceholder(post.cover.light, {
-          size: 10,
-        })).base64
-        post.cover.blurDark = (await getPlaiceholder(post.cover.dark, {
-          size: 10,
-        })).base64
+        post.cover.blurLight = (
+          await getPlaiceholder(post.cover.light, {
+            size: 10,
+          })
+        ).base64
+        post.cover.blurDark = (
+          await getPlaiceholder(post.cover.dark, {
+            size: 10,
+          })
+        ).base64
       } catch (e) {
         post.cover.blurLight = ''
         post.cover.blurDark = ''

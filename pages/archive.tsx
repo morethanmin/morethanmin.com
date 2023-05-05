@@ -79,7 +79,7 @@ const Archive: NextPage<{ posts: Post[] }> = ({ posts }) => {
                       className="block mt-2 md:mt-3 text-sm font-semibold text-true-gray-600"
                       date={post.date}
                       fromNow
-                      format="yyyy년 MM월 DD일"
+                      format="yyyy.MM.DD"
                       local
                     />
                   </div>

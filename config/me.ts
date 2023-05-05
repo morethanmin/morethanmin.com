@@ -29,84 +29,87 @@ import {
 } from '@icons-pack/react-simple-icons'
 
 export const me = {
-  site: 'https://www.anzifan.com',
-  name: 'Lee SangMin',
+  site: 'https://www.morethanmin.com',
+  name: 'Sangmin Lee',
   image: '/static/images/portrait.jpeg',
+  email: 'mailto:morethanmin.dev@gmail.com',
+  location: {
+    name: 'Seoul, South Korea',
+    light: '/static/images/map_light.png',
+    dark: '/static/images/map_dark.png',
+  },
   bio: '💻 🎨 🎮 ⚡️',
-  social: [
-    ...links,
-    {
-      url: 'mailto:541297173@qq.com',
-      icon: Gmail,
-      name: 'Email',
-      fill: 'fill-gray-400',
-      border: 'border-gray-400',
-      text: 'text-gray-400',
-      shadow: 'shadow-sky-300',
-      color: 'from-blue-600 to-sky-300',
-    },
-  ],
+  social: [...links],
   overview: [],
   education: [
     {
-      name: 'Nanjing University of Posts and Telecommunications',
-      time: '2016-2020',
+      name: 'Myongji University',
+      time: '2019-2022',
       degree: 'BS, Computer Science',
       color: 'blue',
       logo: '/static/images/njupt.png',
     },
     {
-      name: 'New York Institute of Technology',
-      time: '2016-2020*',
-      degree: 'BS, Computer Science',
+      name: 'Nudge Healthcare',
+      time: '2021-2022',
+      degree: 'Frontend Engineer',
       color: 'yellow',
-      logo: '/static/images/nyit.png',
+      logo: '/static/images/neu.png',
     },
     {
-      name: 'Northeastern University',
-      time: '2021-2022',
-      degree: 'MS, Computer Software Engineering',
+      name: 'PRND Company',
+      time: '2023*',
+      degree: 'Frontend Engineer',
       color: 'red',
-      logo: '/static/images/neu.png',
+      logo: '/static/images/nyit.png',
     },
   ],
   publications: [
     {
-      title:
-        'Exploration of Acoustic and Lexical Cues for the INTERSPEECH 2020 Computational Paralinguistic Challenge',
-      authors: [
-        { name: 'Ziqing Yang' },
-        {
-          name: 'Zifan An',
-          me: true,
-        },
-        { name: 'Zehao Fan' },
-        { name: 'Chengye Jing' },
-        { name: 'Houwei Cao*' },
-      ],
-      website:
-        'https://sites.google.com/nyit.edu/seniorproject2020-interspeech',
-      link: 'https://par.nsf.gov/biblio/10282648-exploration-acoustic-lexical-cues-interspeech-computational-paralinguistic-challenge',
+      title: 'morethan-log',
+      authors: [{ name: 'A static blog using notion database' }],
+      website: 'https://morethan-log.vercel.app',
+      link: 'https://github.com/morethanmin/morethan-log',
       tags: [
         {
-          name: 'INTERSPEECH 2020',
-          color: 'blue',
-        },
-        {
-          name: 'NYIT',
+          name: '⭐ 600+',
           color: 'yellow',
         },
         {
-          name: 'lexical features',
+          name: '🍴 300+',
+          color: 'blue',
+        },
+        {
+          name: 'Next.js',
           color: 'red',
         },
         {
-          name: 'fisher vector',
-          color: 'green',
+          name: 'Blog Template',
+          color: 'orange',
         },
         {
-          name: 'model fusion',
-          color: 'purple',
+          name: 'Notion API',
+          color: 'green',
+        },
+      ],
+    },
+    {
+      title: 'cursorify',
+      authors: [{ name: 'Customizable cursor component in your project 🕹️' }],
+      website: 'https://cursorify.github.io/',
+      link: 'https://github.com/cursorify/cursorify',
+      tags: [
+        {
+          name: 'React',
+          color: 'gray',
+        },
+        {
+          name: 'Library',
+          color: 'pink',
+        },
+        {
+          name: 'Component',
+          color: 'brown',
         },
       ],
     },
