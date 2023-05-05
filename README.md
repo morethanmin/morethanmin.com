@@ -1,3 +1,6 @@
-# 멋쟁이상민처럼 블로그
+<samp><a href="https://anzifan.com" target="_blank" rel="noopener noreferrer">anzifan.com</a></samp>
 
-Static Blog using [morethan-log](https://github.com/morethanmin/morethan-log).
+Personal blog powered by Notion official API + Next.JS + WindiCSS!
+ヽ(✿ﾟ▽ﾟ)ノ 
+
+<samp>contents licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY-NC-SA 4.0</a></samp>
