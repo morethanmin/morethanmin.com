@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Post } from '../lib/types'
 import ListLayout from './layout/ListLayout'
 import Moment from 'react-moment'
-import { Colors } from '../lib/colors'
+import { Colors, getColorClassByName } from '../lib/colors'
 import PostMore from './PostMore'
 import ThemedImage from './ThemedImage'
 import { TPost } from '../types'
@@ -139,15 +139,19 @@ const PostList: NextPage<PostListProps> = ({
                           <article className="flex flex-col justify-between items-start">
                             <Link
                               href="/category/[{Category}]"
-                              as={`/category/${post.category}`}
+                              as={`/category/${post.category?.[0]}`}
                               passHref
                             >
                               <p
                                 className={`mb-2 text-xs font-bold text-true-gray-600 leading-2 ${
-                                  Colors.default.text.normal // TODO: tag color
+                                  Colors[
+                                    getColorClassByName(
+                                      post.category?.[0] || ''
+                                    )
+                                  ].text.normal
                                 }`}
                               >
-                                {post.category}
+                                {post.category?.[0]}
                               </p>
                             </Link>
                             <h2 className={`${size.title} font-bold`}>

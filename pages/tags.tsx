@@ -3,13 +3,12 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 import { BlogLayoutPure } from '../components/layout/BlogLayout'
 import ListLayout from '../components/layout/ListLayout'
-import { Colors } from '../lib/colors'
+import { Colors, getColorClassByName } from '../lib/colors'
 import { NextPageWithLayout } from './_app'
 import { getPosts } from '../lib/apis'
 import { getAllSelectItemsFromPosts } from '../lib/apis/getAllSelectItemsFromPosts'
 import { TTags } from '../types'
 
-// TODO: tag color
 const TagCard = ({
   name,
   color,
@@ -48,7 +47,11 @@ const Tags: NextPage<{ tags: TTags }> = ({ tags }) => {
       <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">Tags✨</h1>
       <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 pb-4 lg:pb-8 md:grid-cols-3 lg:grid-cols-4">
         {Object.keys(tags).map((tagName) =>
-          TagCard({ name: tagName, color: 'default', count: tags[tagName] })
+          TagCard({
+            name: tagName,
+            color: getColorClassByName(tagName),
+            count: tags[tagName],
+          })
         )}
       </div>
       {/* </div> */}

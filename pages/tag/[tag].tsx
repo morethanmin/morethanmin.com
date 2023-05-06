@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { getAllSelectItemsFromPosts } from '../../lib/apis/getAllSelectItemsFromPosts'
 import { getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
+import { getColorClassByName } from '../../lib/colors'
 
 const TagPage: NextPage<{
   posts: TPost[]
@@ -14,8 +15,7 @@ const TagPage: NextPage<{
       <PostList
         posts={posts}
         filter={tag.name}
-        // TODO: tag color
-        color={'default'}
+        color={getColorClassByName(tag.name)}
         count={tag.count}
       />
     </>

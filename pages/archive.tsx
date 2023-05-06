@@ -1,7 +1,7 @@
 import Moment from 'react-moment'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
-import { Colors } from '../lib/colors'
+import { Colors, getColorClassByName } from '../lib/colors'
 import { FullListLayout } from '../components/layout/ListLayout'
 import moment from 'moment'
 import ThemedImage from '../components/ThemedImage'
@@ -65,7 +65,8 @@ const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
                       {/* <a> */}
                       <p
                         className={`inline-block mb-2 text-xs font-bold text-true-gray-600 leading-2 ${
-                          Colors.default.text.normal // TODO: Colors[post.category.color].text.normal
+                          Colors[getColorClassByName(post.category?.[0] || '')]
+                            .text.normal
                         } `}
                       >
                         {post.category?.[0]}

@@ -3,13 +3,12 @@ import Link from 'next/link'
 import { ReactElement } from 'react'
 import { BlogLayoutPure } from '../components/layout/BlogLayout'
 import ListLayout from '../components/layout/ListLayout'
-import { Colors } from '../lib/colors'
+import { Colors, getColorClassByName } from '../lib/colors'
 import { NextPageWithLayout } from './_app'
 import { getAllSelectItemsFromPosts } from '../lib/apis/getAllSelectItemsFromPosts'
 import { getPosts } from '../lib/apis'
 import { TCategories } from '../types'
 
-// TODO: category color
 const CateCard = ({
   name,
   color,
@@ -63,7 +62,7 @@ const Cates: NextPage<{ categories: TCategories }> = ({ categories }) => {
         {Object.keys(categories).map((categoryName) =>
           CateCard({
             name: categoryName,
-            color: 'default',
+            color: getColorClassByName(categoryName),
             count: categories[categoryName],
           })
         )}

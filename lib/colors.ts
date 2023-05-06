@@ -10,6 +10,19 @@
 // Red
 // default
 
+export const getColorClassByName = (name: string): string => {
+  try {
+    let sum = 0
+    name.split('').forEach((alphabet) => (sum = sum + alphabet.charCodeAt(0)))
+    const colorKey = sum
+      .toString(16)
+      ?.[sum.toString(16).length - 1].toUpperCase()
+    return COLOR_SET[colorKey]
+  } catch {
+    return COLOR_SET[0]
+  }
+}
+
 export type colorsType = {
   [key: string]: {
     [text: string]: {
@@ -18,6 +31,25 @@ export type colorsType = {
       gradient?: string
     }
   }
+}
+
+export const COLOR_SET: { [key: string]: string } = {
+  0: 'default',
+  1: 'red',
+  2: 'orange',
+  3: 'yellow',
+  4: 'green',
+  5: 'blue',
+  6: 'pink',
+  7: 'purple',
+  8: 'brown',
+  9: 'gray',
+  A: 'default',
+  B: 'red',
+  C: 'orange',
+  D: 'yellow',
+  E: 'green',
+  F: 'blue',
 }
 
 export const Colors: colorsType = {
