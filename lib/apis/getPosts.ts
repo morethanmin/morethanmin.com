@@ -5,7 +5,7 @@ import { getPageProperties } from './getPageProperties'
 import { TPost } from '../types'
 
 export async function getPosts() {
-  let id = process.env.NEW_NOTION_DATABASE_ID as string
+  let id = process.env.NOTION_DATABASE_ID as string
   const api = new NotionAPI()
 
   const response = await api.getPage(id)
