@@ -95,7 +95,7 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
                   className="absolute top-0 left-0 w-full h-100vh bg-true-gray-900/50 backdrop-filter backdrop-blur-sm"
                   dark="bg-true-gray-900/70"
                 >
-                  <Menu.Item>
+                  {/* <Menu.Item>
                     <div className="flex place-items-center w-full h-full">
                       <div
                         className="mx-5 w-full sm:mx-auto md:w-150 overflow-scroll bg-white rounded-3xl scrollbar-hide"
@@ -104,7 +104,7 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
                         <PostToc blocks={toc} />
                       </div>
                     </div>
-                  </Menu.Item>
+                  </Menu.Item> */}
                 </Menu.Items>
               </Transition>
             </Menu>

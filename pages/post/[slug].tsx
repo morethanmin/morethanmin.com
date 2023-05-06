@@ -27,7 +27,7 @@ import { getPostBlocks, getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
 import { NotionRenderer } from 'react-notion-x'
 import { useTheme } from 'next-themes'
-
+import { getPageTableOfContents } from 'notion-utils'
 const PostPage: NextPage<{
   post: TPost
   posts: TPost[]
@@ -47,6 +47,7 @@ const PostPage: NextPage<{
   const { locale } = router
 
   // TODO: https://github.com/NotionX/react-notion-x#supported-blocks
+
   // setToc(blocks)
   if (!post || !recordMap) {
     return (
