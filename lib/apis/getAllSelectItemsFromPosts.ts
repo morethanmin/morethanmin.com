@@ -1,4 +1,4 @@
-import { TPost } from '../types'
+import { TPost } from '../../types'
 
 export function getAllSelectItemsFromPosts(
   key: 'tags' | 'category',
