@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
-import { Post } from '../lib/types'
 import ListLayout from './layout/ListLayout'
 import Moment from 'react-moment'
 import { Colors, getColorClassByName } from '../lib/colors'
