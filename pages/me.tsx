@@ -431,6 +431,8 @@ const Overview = () => {
                 <a
                   className=" font-semibold leading-5 md:text-lg mt-2"
                   href={openSource.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {openSource.title}
                 </a>
