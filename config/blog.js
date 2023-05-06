@@ -5,7 +5,7 @@ const CONFIG = {
   UTTERANCES: {
     ENABLE: true,
     CONFIG: {
-      repo: 'morethanmin/morethan-log',
+      repo: 'morethanmin/morethanmin.com',
       'issue-term': 'og:title',
       label: '💬 Utterances',
     },
