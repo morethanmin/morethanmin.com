@@ -28,6 +28,7 @@ import { TPost } from '../../types'
 import { NotionRenderer } from 'react-notion-x'
 import { useTheme } from 'next-themes'
 import { getPageTableOfContents } from 'notion-utils'
+import { filterPosts } from '../../lib/apis/filterPosts'
 const PostPage: NextPage<{
   post: TPost
   posts: TPost[]
@@ -198,9 +199,10 @@ const PostPage: NextPage<{
 
 export const getStaticPaths = async () => {
   const posts = await getPosts()
+  const filteredPosts = filterPosts(posts)
 
   return {
-    paths: posts.map((p: any) => ({ params: { slug: p.slug } })),
+    paths: filteredPosts.map((p: any) => ({ params: { slug: p.slug } })),
     fallback: 'blocking',
   }
 }
@@ -213,11 +215,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Props
 
   const posts = await getPosts()
+  const filteredPosts = filterPosts(posts)
 
-  const pageIndex = posts.findIndex((p) => p.slug === slug)
-  const post = posts[pageIndex]
-  const prev = posts[pageIndex - 1] || null
-  const next = posts[pageIndex + 1] || null
+  const pageIndex = filteredPosts.findIndex((p) => p.slug === slug)
+  const post = filteredPosts[pageIndex]
+  const prev = filteredPosts[pageIndex - 1] || null
+  const next = filteredPosts[pageIndex + 1] || null
 
   const recordMap = await getPostBlocks(post.id!)
 
@@ -242,11 +245,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const pagination: any = {
     prev: pageIndex - 1 >= 0 ? prev : null,
-    next: pageIndex + 1 < posts.length ? next : null,
+    next: pageIndex + 1 < filteredPosts.length ? next : null,
   }
 
   return {
-    props: { posts, post, pagination, recordMap },
+    props: { posts: filteredPosts, post, pagination, recordMap },
     revalidate: 60 * 60,
   }
 }

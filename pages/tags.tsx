@@ -11,6 +11,7 @@ import { TTags } from '../types'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../config/blog'
 import { useRouter } from 'next/router'
+import { filterPosts } from '../lib/apis/filterPosts'
 
 const TagCard = ({
   name,
@@ -79,7 +80,8 @@ const Tags: NextPage<{ tags: TTags }> = ({ tags }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts()
-  const tags = getAllSelectItemsFromPosts('tags', posts)
+  const filteredPosts = filterPosts(posts)
+  const tags = getAllSelectItemsFromPosts('tags', filteredPosts)
 
   return {
     props: {

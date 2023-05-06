@@ -10,6 +10,7 @@ import { TPost } from '../types'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../config/blog'
 import { useRouter } from 'next/router'
+import { filterPosts } from '../lib/apis/filterPosts'
 
 // TODO: Add pagination and filter
 
@@ -116,6 +117,7 @@ const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts()
+  const filteredPosts = filterPosts(posts)
 
   // TODO: blur
   /*
@@ -142,7 +144,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts,
+      posts: filteredPosts,
     },
     revalidate: 60 * 60,
   }

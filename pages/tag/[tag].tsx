@@ -8,6 +8,7 @@ import { getColorClassByName } from '../../lib/colors'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../../config/blog'
 import { useRouter } from 'next/router'
+import { filterPosts } from '../../lib/apis/filterPosts'
 
 const TagPage: NextPage<{
   posts: TPost[]
@@ -41,7 +42,8 @@ const TagPage: NextPage<{
 
 export const getStaticPaths = async () => {
   const posts = await getPosts()
-  const tags = getAllSelectItemsFromPosts('tags', posts)
+  const filteredPosts = filterPosts(posts)
+  const tags = getAllSelectItemsFromPosts('tags', filteredPosts)
 
   return {
     paths: Object.keys(tags).map((p: any) => ({ params: { tag: p } })),
@@ -57,9 +59,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { tag } = params as Props
 
   const posts = await getPosts()
-  const tags = getAllSelectItemsFromPosts('tags', posts)
+  const filteredPosts = filterPosts(posts)
+  const tags = getAllSelectItemsFromPosts('tags', filteredPosts)
 
-  const filteredPosts = posts.filter(
+  const tagFilteredPosts = filteredPosts.filter(
     (post) => (post.tags ?? []).filter((tagName) => tagName === tag).length > 0
   )
 
@@ -88,7 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      posts: filteredPosts,
+      posts: tagFilteredPosts,
       tag: { name: tag, count: tags[tag] },
     },
     revalidate: 60 * 60,

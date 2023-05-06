@@ -8,6 +8,7 @@ import { getColorClassByName } from '../../lib/colors'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../../config/blog'
 import { useRouter } from 'next/router'
+import { filterPosts } from '../../lib/apis/filterPosts'
 
 const CatePage: NextPage<{
   posts: TPost[]
@@ -57,9 +58,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { cate } = params as Props
 
   const posts = await getPosts()
-  const categories = getAllSelectItemsFromPosts('category', posts)
+  const filteredPosts = filterPosts(posts)
+  const categories = getAllSelectItemsFromPosts('category', filteredPosts)
 
-  const filteredPosts = posts.filter(
+  const cateFilteredPosts = filteredPosts.filter(
     (post) =>
       (post.category ?? []).filter((categoryName) => categoryName === cate)
         .length > 0
@@ -90,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      posts: filteredPosts,
+      posts: cateFilteredPosts,
       cate: { name: cate, count: categories[cate] },
     },
     revalidate: 60 * 60,

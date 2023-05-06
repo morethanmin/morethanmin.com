@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import { FC, Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faChevronDown as MenuIcon } from '@fortawesome/free-solid-svg-icons';
-import { faChevronUp as MenuOpenIcon } from '@fortawesome/free-solid-svg-icons'
 
 import TagsIcon from '../assets/tags.svg'
 import CategoriesIcon from '../assets/categories.svg'

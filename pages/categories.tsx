@@ -11,6 +11,7 @@ import { TCategories } from '../types'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../config/blog'
 import { useRouter } from 'next/router'
+import { filterPosts } from '../lib/apis/filterPosts'
 
 const CateCard = ({
   name,
@@ -90,7 +91,8 @@ const Cates: NextPage<{ categories: TCategories }> = ({ categories }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts()
-  const categories = getAllSelectItemsFromPosts('category', posts)
+  const filteredPosts = filterPosts(posts)
+  const categories = getAllSelectItemsFromPosts('category', filteredPosts)
 
   return {
     props: {

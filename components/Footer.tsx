@@ -8,8 +8,13 @@ import {
 } from '@icons-pack/react-simple-icons'
 import ThemeSwitch from './ThemeSwitch'
 import { me } from '../config/me'
+import { faAppleAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTheme } from 'next-themes'
 
 const Footer = () => {
+  const { resolvedTheme } = useTheme()
+
   const thisYear = new Date().getFullYear()
   const tools = [
     {
@@ -36,12 +41,9 @@ const Footer = () => {
           <nav className="py-4 flex justify-between items-center">
             <Link href="/">
               <a>
-                <Image
-                  className=""
-                  src="/static/images/favicon.png"
-                  alt="logo"
-                  width="20px"
-                  height="20px"
+                <FontAwesomeIcon
+                  icon={faAppleAlt}
+                  style={{ color: resolvedTheme === 'dark' ? '#fff' : '#000' }}
                 />
               </a>
             </Link>

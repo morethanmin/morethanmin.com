@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import ListLayout from '../components/layout/ListLayout'
-import { Post } from '../lib/types'
 import { me } from '../config/me'
 import { Colors } from '../lib/colors'
 import Image from 'next/image'
@@ -12,6 +11,7 @@ import { useTheme } from 'next-themes'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../config/blog'
 import { useRouter } from 'next/router'
+import { TPost } from '../types'
 
 const CardLayout = ({ children }: any) => {
   return (
@@ -616,7 +616,7 @@ const Project = () => {
   )
 }
 
-const Me: NextPage<{ posts: Post[] }> = ({ posts }) => {
+const Me: NextPage<{ posts: TPost[] }> = ({ posts }) => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)

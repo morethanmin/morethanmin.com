@@ -1,19 +1,12 @@
-export type TPostStatus = "Private" | "Public" | "PublicOnDetail"
-export type TPostType = "Post" | "Paper" | "Page"
+export type TPostStatus = 'Private' | 'Public'
 
 export type TPost = {
   id: string
   date: { start_date: string }
-  type: TPostType[]
   slug: string
   tags?: string[]
   category?: string[]
   summary?: string
-  author?: {
-    id: string
-    name: string
-    profile_photo?: string
-  }[]
   title: string
   status: TPostStatus[]
   createdTime: string
@@ -30,4 +23,4 @@ export type TCategories = {
   [category: string]: number
 }
 
-export type ThemeType = "dark" | "light"
+export type ThemeType = 'dark' | 'light'

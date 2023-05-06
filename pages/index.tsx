@@ -15,6 +15,7 @@ import { getPosts } from '../lib/apis'
 import { TPost } from '../types'
 import { NextSeo } from 'next-seo'
 import { CONFIG } from '../config/blog'
+import { filterPosts } from '../lib/apis/filterPosts'
 
 const Home: NextPage<{ posts: TPost[] }> = ({ posts }) => {
   const mainPosts = posts.slice(0, 17)
@@ -58,7 +59,7 @@ const Home: NextPage<{ posts: TPost[] }> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts()
-
+  const filteredPosts = filterPosts(posts)
   // TODO: blur
   /*
   for (let post of db) {
@@ -84,7 +85,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts,
+      posts: filteredPosts,
     },
     revalidate: 60 * 60,
   }
