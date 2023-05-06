@@ -84,7 +84,7 @@ const Overview = () => {
         <div className="text-xs font-semibold xs:text-lg md:text-xl">
           Hey there 👋
         </div>
-        <div className="text-lg font-semibold xs:text-2xl sm:text-3xl md:text-4xl whitespace-nowrap">
+        <div className="text-lg font-semibold xs:text-xl sm:text-3xl md:text-4xl whitespace-nowrap">
           {`I'm ${me.name}`}
         </div>
       </div>
@@ -355,7 +355,7 @@ const Overview = () => {
                     <div
                       className={`h-4 lg:h-6 ${Colors['blue'].bg.msg} rounded-full w-full relative ${Colors['blue'].text.msg}`}
                       before="content-DEFAULT text-transparent absolute w-1/4 rounded-r-full h-full bg-blue-100 top-0 right-0"
-                      after="absolute content-🇰🇷MJU(LOA) tracking-wide font-semibold absolute -top-6 left-2"
+                      after={`absolute xs:content-🇰🇷MJU content-🇰🇷MJU(LOA) tracking-wide font-semibold absolute -top-6 left-2`}
                     />
                   </a>
                 </div>
