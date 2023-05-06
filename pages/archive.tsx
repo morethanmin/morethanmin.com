@@ -50,7 +50,7 @@ const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
                     } mb-4`}
                     date={post.date.start_date}
                     fromNow
-                    format="yyyy년"
+                    format="yyyy"
                     local
                   />
                 </div>
