@@ -1,6 +1,5 @@
 import { FC, ReactNode, useEffect, useRef, useState } from 'react'
 import { slugify } from 'transliteration'
-import { Post } from '../lib/types'
 
 type PostTocProps = {
   blocks: any
