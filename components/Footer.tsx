@@ -96,7 +96,7 @@ const Footer = () => {
               <p className="flex flex-col items-end">
                 <a
                   className="hover:underline"
-                  href="https://anzifan-old.vercel.app"
+                  href="https://morethan-log.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
