@@ -48,7 +48,7 @@ const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
                     className={`block text-[28px] font-semibold ${
                       index !== 0 ? 'mt-13' : ''
                     } mb-4`}
-                    date={post.date}
+                    date={post.date.start_date}
                     fromNow
                     format="yyyy년"
                     local
