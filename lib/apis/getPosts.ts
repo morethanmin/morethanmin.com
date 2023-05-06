@@ -2,7 +2,7 @@ import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
 import getAllPageIds from './getAllPageIds'
 import { getPageProperties } from './getPageProperties'
-import { TPost } from '../types'
+import { TPost } from '../../types'
 
 export async function getPosts() {
   let id = process.env.NOTION_PAGE_ID as string
