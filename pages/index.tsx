@@ -1,15 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-
-import { getDatabase } from '../lib/notion'
 import PostList from '../components/PostList'
-import { Post } from '../lib/types'
 
-import { getPlaiceholder } from 'plaiceholder'
 import { WidgetMeMedium, WidgetMeSmall } from '../components/widget/WidgetMe'
 import ListLayout from '../components/layout/ListLayout'
 import {
@@ -17,18 +9,10 @@ import {
   WidgetOverViewSmall,
 } from '../components/widget/WidgetOverview'
 import { Media, MediaContextProvider } from '../components/utility/Breakpoints'
-import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { me } from '../config/me'
-import { log } from 'console'
 import { getPosts } from '../lib/apis'
 import { TPost } from '../types'
-
-// type PostResult = QueryDatabaseResponse['results'][number];
-
-// export type Posts = {
-//   posts: Post[];
-// }
 
 const Home: NextPage<{ posts: TPost[] }> = ({ posts }) => {
   const mainPosts = posts.slice(0, 17)

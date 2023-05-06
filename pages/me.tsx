@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import ListLayout from '../components/layout/ListLayout'
-import { getDatabase } from '../lib/notion'
 import { Post } from '../lib/types'
 import { me } from '../config/me'
 import { Colors } from '../lib/colors'
@@ -78,9 +77,7 @@ const Overview = () => {
         data-aos="fade-up"
         data-aos-duration="800"
         className={`${style} bg-gradient-to-br from-[#a78bfa] to-[#d946ef] text-white`}
-        // className={`${style} bg-gradient-to-br from-[#ffa0a8] to-[#fffcdc] text-white`}
       >
-        {/* <div className="flex flex-col justify-between"> */}
         <div className="text-xs font-semibold xs:text-lg md:text-xl">
           Hey there 👋
         </div>
@@ -528,7 +525,7 @@ const ProjectHero = () => {
         Source Code
       </a>
       <div data-aos="fade-up" className="flex justify-center">
-        <div className="flex w-full mt-8" id="astraios-images">
+        <div className="flex w-full mt-8" id="coquality-images">
           <div className="w-[520px] h-[360px] md:(w-[620px] h-[420px]) lg:(w-[940px] h-[570px])">
             <Image
               src={project.image!}
@@ -623,9 +620,9 @@ const Me: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const handleScroll = () => {
     const navBar = document.getElementById('navbar')
     const hero = document.getElementById('hero')
-    const imagesBounding = document.getElementById('astraios-images')
+    const imagesBounding = document.getElementById('coquality-images')
     const images = document.querySelectorAll(
-      '#astraios-images > :nth-child(odd)'
+      '#coquality-images > :nth-child(odd)'
     )
 
     images.forEach((image: any) => {

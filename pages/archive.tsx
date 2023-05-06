@@ -1,19 +1,19 @@
 import Moment from 'react-moment'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
-import { getPlaiceholder } from 'plaiceholder'
 import { Colors } from '../lib/colors'
-import { getDatabase } from '../lib/notion'
-import { Post } from '../lib/types'
-import Image from 'next/image'
 import { FullListLayout } from '../components/layout/ListLayout'
 import moment from 'moment'
 import ThemedImage from '../components/ThemedImage'
+import { getPosts } from '../lib/apis'
+import { TPost } from '../types'
 
 // TODO: Add pagination and filter
 
-const Archive: NextPage<{ posts: Post[] }> = ({ posts }) => {
-  const yearArray = posts.map((post) => moment(post.date).format('YYYY'))
+const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
+  const yearArray = posts.map((post) =>
+    moment(post.date.start_date).format('YYYY')
+  )
 
   return (
     <FullListLayout>
@@ -59,16 +59,16 @@ const Archive: NextPage<{ posts: Post[] }> = ({ posts }) => {
                   <div className="pl-4 md:pl-8 basis-0 flex-shrink-0 flex-grow">
                     <Link
                       href="/category/[{Category}]"
-                      as={`/category/${post.category.name}`}
+                      as={`/category/${post.category?.[0]}`}
                       passHref
                     >
                       {/* <a> */}
                       <p
                         className={`inline-block mb-2 text-xs font-bold text-true-gray-600 leading-2 ${
-                          Colors[post.category.color].text.normal
+                          Colors.default.text.normal // TODO: Colors[post.category.color].text.normal
                         } `}
                       >
-                        {post.category.name}
+                        {post.category?.[0]}
                       </p>
                       {/* </a> */}
                     </Link>
@@ -94,8 +94,10 @@ const Archive: NextPage<{ posts: Post[] }> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const db = await getDatabase()
+  const posts = await getPosts()
 
+  // TODO: blur
+  /*
   for (let post of db) {
     if (post) {
       try {
@@ -115,10 +117,11 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
   }
+  */
 
   return {
     props: {
-      posts: db,
+      posts,
     },
     revalidate: 60 * 60,
   }

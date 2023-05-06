@@ -156,7 +156,7 @@ const PostList: NextPage<PostListProps> = ({
                           </article>
                           <Moment
                             className="block mt-2 text-sm font-semibold text-true-gray-600 dark:text-true-gray-400"
-                            date={post.date}
+                            date={post.date.start_date}
                             fromNow
                             format="yyyy.MM.DD"
                             local

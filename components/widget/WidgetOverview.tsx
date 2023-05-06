@@ -1,25 +1,17 @@
 import { FC, useEffect, useState } from 'react'
-import Image from 'next/image'
-import { links, LinkType } from '../../config/links'
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  Title,
-  // Tooltip,
-  Legend,
   BarElement,
 } from 'chart.js'
-import { Line, Bar, Scatter } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 import { Colors } from '../../lib/colors'
 // TODO: gradient is too big
 import gradient from 'chartjs-plugin-gradient'
 import { Tooltip } from '../utility/Tooltip'
-import { GetStaticProps } from 'next'
-import { getDatabase } from '../../lib/notion'
-import { Post } from '../../lib/types'
 import useSWRImmutable from 'swr/immutable'
 import { useTheme } from 'next-themes'
 import { TPost } from '../../types'
