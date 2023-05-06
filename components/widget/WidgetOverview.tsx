@@ -22,6 +22,7 @@ import { getDatabase } from '../../lib/notion'
 import { Post } from '../../lib/types'
 import useSWRImmutable from 'swr/immutable'
 import { useTheme } from 'next-themes'
+import { TPost } from '../../types'
 
 ChartJS.register(
   CategoryScale,
@@ -36,12 +37,12 @@ ChartJS.register(
 
 const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
-export const WidgetOverViewSmall: FC<{ posts: Post[] }> = ({ posts }) => {
-  const tagsMap = posts.map((p) => ({ tags: p.tags, date: p.updateDate }))
-  const dateMap = posts.map((p) => ({ date: new Date(p.updateDate) }))
+export const WidgetOverViewSmall: FC<{ posts: TPost[] }> = ({ posts }) => {
+  const tagsMap = posts.map((p) => ({ tags: p.tags }))
+  const dateMap = posts.map((p) => ({ date: new Date(p.createdTime) }))
   const count = 0
   const tagsAmount = tagsMap.reduce(
-    (prev, cur) => prev + cur.tags.length,
+    (prev, cur) => prev + (cur.tags?.length ?? 0),
     count
   )
 
@@ -77,15 +78,15 @@ export const WidgetOverViewSmall: FC<{ posts: Post[] }> = ({ posts }) => {
   )
 }
 
-export const WidgetOverViewMedium: FC<{ posts: Post[]; fix?: boolean }> = ({
+export const WidgetOverViewMedium: FC<{ posts: TPost[]; fix?: boolean }> = ({
   posts,
   fix,
 }) => {
-  const tagsMap = posts.map((p) => ({ tags: p.tags, date: p.updateDate }))
-  const dateMap = posts.map((p) => ({ date: new Date(p.updateDate) }))
+  const tagsMap = posts.map((p) => ({ tags: p.tags }))
+  const dateMap = posts.map((p) => ({ date: new Date(p.createdTime) }))
   const count = 0
   const tagsAmount = tagsMap.reduce(
-    (prev, cur) => prev + cur.tags.length,
+    (prev, cur) => prev + (cur.tags?.length ?? 0),
     count
   )
   const monthPosts = dateMap.map(

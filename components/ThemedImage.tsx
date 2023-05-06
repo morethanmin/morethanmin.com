@@ -1,45 +1,78 @@
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import { TPost } from '../types'
 
-function ThemedImage(params: any) {
-    const { resolvedTheme } = useTheme()
-    const [mounted, setMounted] = useState(false)
-    useEffect(() => {
-        setMounted(true)
-    }, [])
+type Props = {
+  post: TPost
+  quality?: number
+  className?: string
+}
 
-    if (!mounted) {
-        return <Image src={params.post.cover.light} quality={params.quality || 100} layout="fill" objectFit="cover" sizes="100%" alt={params.post.title}
+function ThemedImage({ post, quality, className }: Props) {
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const emptyImage =
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+
+  if (!mounted) {
+    return (
+      <Image
+        src={post.thumbnail || emptyImage}
+        quality={quality || 100}
+        layout="fill"
+        objectFit="cover"
+        sizes="100%"
+        alt={post.title}
         // onLoadingComplete={handleLoad}
         placeholder="blur"
-        blurDataURL={params.post.cover.blurLight}
-        className={params.className} />
-    }
+        // TODO: Blur image
+        blurDataURL={emptyImage}
+        // blurDataURL={post.cover.blurLight }
+        className={className}
+      />
+    )
+  }
 
-    const emptyImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-    let src
-    let blurSrc
-    switch (resolvedTheme) {
-        case 'light':
-            src = params.post.cover.light
-            blurSrc = params.post.cover.blurLight
-            break
-        case 'dark':
-            src = params.post.cover.dark
-            blurSrc = params.post.cover.blurDark
-            break
-        default:
-            src = emptyImage
-            blurSrc = emptyImage
-            break
-    }
+  let src
+  let blurSrc
+  switch (resolvedTheme) {
+    case 'light':
+      src = post.thumbnail
+      // TODO: Blur image
+      //   blurSrc = post.cover.blurLight
+      blurSrc = emptyImage
+      break
+    case 'dark':
+      src = post.thumbnail
+      // TODO: Blur image
+      //   blurSrc = post.cover.blurDark
+      blurSrc = emptyImage
+      break
+    default:
+      src = emptyImage
+      blurSrc = emptyImage
+      break
+  }
 
-    return <Image priority={true} src={src} quality={params.quality || 100} layout="fill" objectFit="cover" alt={params.post.title}
-        // onLoadingComplete={handleLoad}
-        placeholder="blur"
-        blurDataURL={blurSrc}
-        className={params.className} />
+  return (
+    <Image
+      priority={true}
+      src={src || emptyImage}
+      quality={quality || 100}
+      layout="fill"
+      objectFit="cover"
+      alt={post.title}
+      // onLoadingComplete={handleLoad}
+      placeholder="blur"
+      blurDataURL={blurSrc}
+      className={className}
+    />
+  )
 }
 
 export default ThemedImage

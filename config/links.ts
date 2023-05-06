@@ -1,18 +1,15 @@
 import {
-  Github,
-  Google,
-  Props,
-  Linkedin,
-  Instagram,
-  Twitter,
+  SiGithub,
+  SiGoogle,
+  SiLinkedin,
+  SiInstagram,
+  SiTwitter,
 } from '@icons-pack/react-simple-icons'
 import { FC } from 'react'
-import Sspai from '../assets/sspai.svg'
-import Zhihu from '../assets/zhihu.svg'
 
 export type LinkType = {
   url: string
-  icon: FC<Props> | string
+  icon: FC<any> | string
   color: string
   fill: string
   border: string
@@ -31,7 +28,7 @@ export const links: readonly [
 ] = [
   {
     url: 'https://github.com/morethanmin',
-    icon: Github,
+    icon: SiGithub,
     color: 'from-bg-[#24292f] to-bg-[#040d21]',
     fill: 'fill-[#181717]',
     border: 'border-[#181717]',
@@ -42,7 +39,7 @@ export const links: readonly [
   },
   {
     url: 'http://linkedin.com/in/morethanmin/',
-    icon: Linkedin,
+    icon: SiLinkedin,
     fill: 'fill-[#0A66C2]',
     border: 'border-[#0A66C2]',
     shadow: 'shadow-blue-300',
@@ -52,7 +49,7 @@ export const links: readonly [
   },
   {
     url: 'https://instagram.com/more-dev-min',
-    icon: Instagram,
+    icon: SiInstagram,
     color: 'from-bg-[#C13584] to-bg-[#F56040]',
     fill: 'fill-[#da282a]',
     border: 'border-[#da282a]',
@@ -62,7 +59,7 @@ export const links: readonly [
   },
   {
     url: 'https://twitter.com/more_than_min',
-    icon: Twitter,
+    icon: SiTwitter,
     color:
       'from-bg-[#1DA1F2] to-bg-[#1DA1F2] dark:(from-bg-[#1DA1F2] to-bg-[#1DA1F2])',
     fill: 'fill-[#1DA1F2]',
@@ -74,7 +71,7 @@ export const links: readonly [
   },
   {
     url: 'mailto:morethanmin.dev@gmail.com',
-    icon: Google,
+    icon: SiGoogle,
     fill: 'fill-[#DB4437]',
     border: 'border-[#DB4437]',
     shadow: 'shadow-pink-300',

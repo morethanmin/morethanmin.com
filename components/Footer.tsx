@@ -2,11 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 // import ThemeToggle from "../../utils/ThemeToggle";
 import {
-  Nextdotjs,
-  Notion,
-  Windicss,
-  Vercel,
-  Icon,
+  SiNextdotjs,
+  SiNotion,
+  SiWindicss,
+  SiVercel,
 } from '@icons-pack/react-simple-icons'
 import ThemeSwitch from './ThemeSwitch'
 import { me } from '../config/me'
@@ -15,19 +14,19 @@ const Footer = () => {
   const thisYear = new Date().getFullYear()
   const tools = [
     {
-      icon: Notion,
+      icon: SiNotion,
       url: 'https://developers.notion.com',
     },
     {
-      icon: Nextdotjs,
+      icon: SiNextdotjs,
       url: 'https://nextjs.org',
     },
     {
-      icon: Windicss,
+      icon: SiWindicss,
       url: 'https://windicss.org',
     },
     {
-      icon: Vercel,
+      icon: SiVercel,
       url: 'https://vercel.com',
     },
   ]

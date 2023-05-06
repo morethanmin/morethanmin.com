@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Wechat, Sinaweibo, Twitter } from '@icons-pack/react-simple-icons'
+import { SiTwitter } from '@icons-pack/react-simple-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { InlineShareButtons } from 'sharethis-reactjs'
@@ -32,7 +32,7 @@ export const Share = () => {
       },
       {
         name: 'twitter',
-        icon: <Twitter size="20" />,
+        icon: <SiTwitter size="20" />,
         color: 'hover:text-blue-400',
         onClick: () => twitterShare.click(),
       },

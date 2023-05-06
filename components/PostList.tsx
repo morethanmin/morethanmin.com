@@ -6,20 +6,21 @@ import Moment from 'react-moment'
 import { Colors } from '../lib/colors'
 import PostMore from './PostMore'
 import ThemedImage from './ThemedImage'
+import { TPost } from '../types'
 
 interface PostListProps {
-  posts: Post[]
+  posts: TPost[]
   filter?: string
   color?: string
   count?: number
 }
 
-const PostList: NextPage<{
-  posts: Post[]
-  filter?: string
-  color?: string
-  count?: number
-}> = ({ posts, filter, color, count }: PostListProps) => {
+const PostList: NextPage<PostListProps> = ({
+  posts,
+  filter,
+  color,
+  count,
+}: PostListProps) => {
   const mainPosts = posts.slice(0, 9)
   const morePosts = posts.slice(9, 17)
 
@@ -52,7 +53,7 @@ const PostList: NextPage<{
     },
   }
 
-  function itemSizeSwitch(index: Number) {
+  function itemSizeSwitch(index: number) {
     switch (true) {
       case index == 0:
         return postSize.big
@@ -109,7 +110,7 @@ const PostList: NextPage<{
             )}
           </h1>
           <div className="grid grid-cols-6 gap-6.5 lg:gap-10">
-            {mainPosts.map((post: Post, index: Number) => {
+            {mainPosts.map((post: TPost, index: number) => {
               const size = itemSizeSwitch(index)
               return (
                 <div
@@ -138,15 +139,15 @@ const PostList: NextPage<{
                           <article className="flex flex-col justify-between items-start">
                             <Link
                               href="/category/[{Category}]"
-                              as={`/category/${post.category.name}`}
+                              as={`/category/${post.category}`}
                               passHref
                             >
                               <p
                                 className={`mb-2 text-xs font-bold text-true-gray-600 leading-2 ${
-                                  Colors[post.category.color].text.normal
+                                  Colors.default.text.normal // TODO: tag color
                                 }`}
                               >
-                                {post.category.name}
+                                {post.category}
                               </p>
                             </Link>
                             <h2 className={`${size.title} font-bold`}>

@@ -1,5 +1,4 @@
-import { GetStaticProps, NextPage } from 'next'
-import ContentLayout from '../components/layout/ContentLayout'
+import { NextPage } from 'next'
 import ListLayout from '../components/layout/ListLayout'
 import { getDatabase } from '../lib/notion'
 import { Post } from '../lib/types'
@@ -65,7 +64,6 @@ const Overview = () => {
   const style =
     'bg-white rounded-3xl p-4 xs:p-4.5 sm:p-6 md:p-8 min-h-25 sm:min-h-37 flex flex-col justify-between transform rotate-0 overflow-hidden dark:bg-true-gray-900'
   const social = me.social
-  const publication = me.publications[0]
   const skills = me.skills
   const education = me.education
   const [more, setMore] = useState(false)
@@ -101,7 +99,7 @@ const Overview = () => {
         </p>
         <div className="text-center">
           <p className="text-sm font-semibold xs:text-xl sm:text-2xl md:text-3xl">
-            Web & Mobile Development, Open Source
+            Web & Mobile Development, <br /> Tech Startup
           </p>
         </div>
         <p className="text-xs text-center sm:text-sm text-true-gray-100">
@@ -145,7 +143,7 @@ const Overview = () => {
         <p className="text-sm font-semibold text-left xs:text-lg sm:text-xl md:text-3xl lg:text-4xl">
           Love{' '}
           <span className="text-white text-stroke-1 text-stroke-orange-500">
-            Logical
+            Open Source
           </span>
         </p>
         <p className="text-xs font-semibold xs:text-lg sm:text-xl lg:text-2xl">
@@ -424,30 +422,30 @@ const Overview = () => {
         <h1
           className={`text-2xl sm:text-3xl font-bold ${Colors['blue'].text.msg} mb-4`}
         >
-          Open Sources
+          Open Source
         </h1>
         <div className="flex flex-col gap-8">
-          {me.publications.map((publication, idx) => (
+          {me.openSources.map((openSource, idx) => (
             <div key={idx}>
               <div className="flex items-center justify-between">
                 <a
                   className=" font-semibold leading-5 md:text-lg mt-2"
-                  href={publication.link}
+                  href={openSource.link}
                 >
-                  {publication.title}
+                  {openSource.title}
                 </a>
                 <div className={`${Colors['blue'].text.msg} inline-block mt-3`}>
                   <a
                     className={`transition-all duration-200 ease-in-out bg-bottom bg-no-repeat bg-no-underline-size hover:bg-underline-size bg-underline-blue text-sm md:text-normal`}
                     after="content-↗"
-                    href={publication.website}
+                    href={openSource.website}
                     target="_blank"
                     rel="noopener noreferrer"
                   >{`Link `}</a>
                 </div>
               </div>
               <div className="mb-2">
-                {publication.authors.map((author: any, index: number) => (
+                {openSource.authors.map((author: any, index: number) => (
                   <div key={author.name} className="inline">
                     <span
                       className={`text-xs md:text-sm ${
@@ -459,13 +457,13 @@ const Overview = () => {
                       {author.name}
                     </span>
                     <span className="text-xs text-true-gray-400 md:text-sm">
-                      {index != publication.authors.length - 1 ? ', ' : ''}
+                      {index != openSource.authors.length - 1 ? ', ' : ''}
                     </span>
                   </div>
                 ))}
               </div>
               <div className="my-3">
-                {publication.tags.map((tag) => (
+                {openSource.tags.map((tag) => (
                   <span
                     className={`inline-block text-[9px] mr-1 md:(text-xs mb-1) ${
                       Colors[tag.color].bg.normal
@@ -484,23 +482,9 @@ const Overview = () => {
   )
 }
 
-const Skills = () => {
-  return (
-    <CardLayout>
-      <div>
-        Programming Languages: Java, Python, Javascript/Typescript, Swift, SQL,
-        HTML， CSS, MATLAB...
-        <br />
-        Framework/Libraries: React.JS, Vue.JS, Node.JS, scikit-learn,
-        TensorFlow, Hadoop, Bulma, Tailind CSS, Scrapy, Git...
-        <br />
-        Database: MySQL, MongoDB, Redis...
-      </div>
-    </CardLayout>
-  )
-}
-
 const ProjectHero = () => {
+  const { resolvedTheme } = useTheme()
+
   const project = me.projects[0]
   return (
     <div
@@ -515,56 +499,44 @@ const ProjectHero = () => {
       </h1>
       <div
         data-aos="fade-up"
-        className="mt-10 mb-4 shadow-md aspect-ratio w-15 xs:w-20 rounded-2xl"
+        className="mt-10 mb-4 aspect-ratio w-65 xs:w-70"
         id="hero"
       >
         <Image
-          className="rounded-2xl"
-          src={project.icon}
+          src={
+            resolvedTheme === 'light' ? project.logo!.light : project.logo!.dark
+          }
           layout="responsive"
-          width="100"
-          height="100"
+          width="525"
+          height="160"
           alt={project.name}
         />
       </div>
-      <p data-aos="fade-up">{project.name}</p>
       <p
         data-aos="fade-up"
         className="my-4 text-3xl font-bold text-center max-w-120 md:text-4xl md:max-w-150"
       >
         {project.description}
       </p>
-      <p
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
         data-aos="fade-up"
         className="px-3 py-1 text-blue-400 border-blue-400 rounded-full border-3"
       >
-        {project.tip}
-      </p>
+        Source Code
+      </a>
       <div data-aos="fade-up" className="flex justify-center">
         <div className="flex w-full mt-8" id="astraios-images">
-          {project.images?.map((image: string) => (
-            <div
-              className="mx-4 relative odd:(mt-[40px] will-change-transform ease-in-out transition-all) md:odd:mt-[60px]"
-              key={image}
-            >
-              <div className="absolute top-[8px] left-[9px] w-[144px] h-[314px] md:(w-[198px] h-[428px] top-[13px] left-[12px]) lg:(w-[268px] h-[580px] top-[15px] left-[17px])">
-                <Image
-                  src={image}
-                  alt={project.name}
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-              <div className="relative -mr-[109px] -ml-[2px] -mb-[117px] w-[274px] h-[410px] md:(-mr-[149px] -ml-[4px] -mb-[86px] w-[376px] h-[558px]) lg:(-mr-[200px] -ml-[2px] -mb-[100px] w-[504px] h-[752px])">
-                <Image
-                  src="/static/images/iphone_case_shadow.png"
-                  alt={project.name}
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </div>
-          ))}
+          <div className="w-[520px] h-[360px] md:(w-[620px] h-[420px]) lg:(w-[940px] h-[570px])">
+            <Image
+              src={project.image!}
+              alt={project.name}
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -586,26 +558,30 @@ const Project = () => {
             <div className="flex flex-col items-start justify-center h-full">
               <div className="flex flex-row-reverse items-center gap-3 md:flex-col md:items-start">
                 <div className="mb-4 aspect-ratio w-15 xs:w-20">
-                  <div
-                    className="border-true-gray-100 border-1 rounded-xl lg:(rounded-2xl) shadow-md"
-                    dark="border-true-gray-800"
-                  >
-                    <Image
-                      src={project.icon}
-                      alt="pokemon"
-                      layout="responsive"
-                      width="100"
-                      height="100"
-                    />
-                  </div>
+                  <Image
+                    src={project.icon}
+                    alt="pokemon"
+                    layout="responsive"
+                    width="100"
+                    height="100"
+                  />
                 </div>
-                <h2 className="mb-2 text-2xl font-bold xs:text-3xl md:text-4xl lg:text-5xl">
+                <p className="mb-2 text-2xl font-bold xs:text-3xl md:text-4xl lg:text-5xl">
                   {project.name}
-                </h2>
+                </p>
               </div>
-              <p className="font-medium text-normal xs:text-lg lg:text-xl text-true-gray-400">
+              <p className="mb-4 font-medium text-normal xs:text-lg lg:text-xl text-true-gray-400">
                 {project.description}
               </p>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-aos="fade-up"
+                className="px-3 py-1 text-blue-400 border-blue-400 rounded-full border-3"
+              >
+                Source Code
+              </a>
             </div>
           </div>
           {project['video'] ? (
@@ -623,7 +599,7 @@ const Project = () => {
                 />
               </div>
               <video
-                className="absolute z-0 w-53 left-11.5 top-3 md:(left-8) lg:(top-3 left-17.5 w-53)"
+                className="absolute z-0 w-53 left-11.5 top-10 md:(left-8) lg:(top-10 left-17.5 w-53)"
                 src={project['video']}
                 playsInline
                 autoPlay
@@ -634,21 +610,6 @@ const Project = () => {
           ) : null}
         </div>
       </CardLayout>
-      <div data-aos="fade-up" className="flex justify-center">
-        <a
-          className={`transition-all duration-200 ease-in-out transform ${Colors['purple'].text.msg} bg-white hover:text-white hover:bg-purple-500 border-2 border-purple-500 rounded-full`}
-          href={me.social[0].url}
-          target="_blank"
-          rel="noopener noreferrer"
-          dark="bg-true-gray-900 hover:bg-purple-500"
-        >
-          <p
-            className={`text-sm font-semibold inline-block text-center px-4 py-3`}
-          >
-            Explore More
-          </p>
-        </a>
-      </div>
     </div>
   )
 }
@@ -700,6 +661,21 @@ const Me: NextPage<{ posts: Post[] }> = ({ posts }) => {
       <ListLayout>
         <div className="my-10">
           <Project />
+          <div data-aos="fade-up" className="flex justify-center">
+            <a
+              className={`transition-all duration-200 ease-in-out transform ${Colors['purple'].text.msg} bg-white hover:text-white hover:bg-purple-500 border-2 border-purple-500 rounded-full`}
+              href={me.social[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              dark="bg-true-gray-900 hover:bg-purple-500"
+            >
+              <p
+                className={`text-sm font-semibold inline-block text-center px-4 py-3`}
+              >
+                Explore More
+              </p>
+            </a>
+          </div>
         </div>
       </ListLayout>
     </>

@@ -16,11 +16,11 @@ a {
 }
 
 @screen lg {
-  .more-list> :nth-last-child(-n+2) {
+  .more-list > :nth-last-child(-n + 2) {
     margin-bottom: 0;
   }
 
-  .more-list> :nth-last-child(-n+2)::after {
+  .more-list > :nth-last-child(-n + 2)::after {
     display: none;
   }
 }
@@ -35,4 +35,7 @@ img {
 }
 .dark .tk-expand {
   background-color: rgb(23, 23, 23) !important;
+}
+.utterances {
+  max-width: 960px;
 }

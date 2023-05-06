@@ -6,6 +6,8 @@ import Comment from '../components/Comment'
 import Image from 'next/image'
 import { Colors } from '../lib/colors'
 import useSWRImmutable from 'swr/immutable'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../config/blog'
 
 const previewFetcher = (url: string) =>
   fetch(`/api/bookmark/${encodeURIComponent(url)}`).then((res) => res.json())
@@ -101,22 +103,34 @@ const FriendCard: FC<FriendType> = (friend) => {
 
 const Friends: NextPage = () => {
   return (
-    <ListLayout>
-      <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">Friends👾</h1>
-      <p className="text-true-gray-400">
-        I have a scarcity of friends……(｡ì _ í｡)
-      </p>
-      <div className="grid grid-cols-2 gap-4 my-6 md:grid-cols-4 lg:grid-cols-5">
-        {friends.map((friend: FriendType) => (
-          <FriendCard key={friend.name} {...friend} />
-        ))}
-      </div>
-      {/* <hr /> */}
-      <p className="mt-12 text-center text-true-gray-400">
-        👇扣1立即交友(不是)👇
-      </p>
-      <Comment />
-    </ListLayout>
+    <>
+      <NextSeo
+        title={`friends | ${CONFIG.BLOG_TITLE}`}
+        openGraph={{
+          type: 'article',
+          locale: 'en_US',
+          title: `friends | ${CONFIG.BLOG_TITLE}`,
+        }}
+      />
+      <ListLayout>
+        <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">
+          Friends👾
+        </h1>
+        <p className="text-true-gray-400">
+          I have a scarcity of friends……(｡ì _ í｡)
+        </p>
+        <div className="grid grid-cols-2 gap-4 my-6 md:grid-cols-4 lg:grid-cols-5">
+          {friends.map((friend: FriendType) => (
+            <FriendCard key={friend.name} {...friend} />
+          ))}
+        </div>
+        {/* <hr /> */}
+        <p className="mt-12 text-center text-true-gray-400">
+          👇 Leave comments to be friends now 👇
+        </p>
+        <Comment />
+      </ListLayout>
+    </>
   )
 }
 

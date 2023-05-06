@@ -18,6 +18,9 @@ import { pageview } from '../lib/gtag'
 import { ThemeProvider } from 'next-themes'
 import { CONFIG } from '../config/blog'
 
+import 'prismjs/themes/prism.css'
+import 'react-notion-x/src/styles.css'
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }

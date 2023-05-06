@@ -21,6 +21,8 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { me } from '../config/me'
 import { log } from 'console'
+import { getPosts } from '../lib/apis'
+import { TPost } from '../types'
 
 // type PostResult = QueryDatabaseResponse['results'][number];
 
@@ -28,11 +30,11 @@ import { log } from 'console'
 //   posts: Post[];
 // }
 
-const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
+const Home: NextPage<{ posts: TPost[] }> = ({ posts }) => {
   const mainPosts = posts.slice(0, 17)
   const router = useRouter()
   const { locale } = router
-  const description = '异次元de机智君的个人博客'
+  const description = 'Home Description'
   const featuredImage = {
     url: `${me.site}/static/images/og.png`,
     alt: description,
@@ -70,7 +72,10 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const db = await getDatabase()
+  const posts = await getPosts()
+
+  // TODO: blur
+  /*
   for (let post of db) {
     if (post) {
       try {
@@ -90,10 +95,11 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     }
   }
+  */
 
   return {
     props: {
-      posts: db,
+      posts,
     },
     revalidate: 60 * 60,
   }
