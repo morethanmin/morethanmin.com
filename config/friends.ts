@@ -50,4 +50,9 @@ export const friends: FriendType[] = [
     name: 'SsongSik',
     img: 'https://avatars.githubusercontent.com/u/83231344?v=4',
   },
+  {
+    url: 'https://www.behance.net/gd054',
+    name: 'gd054',
+    img: '/static/images/friends/gd054.jpg',
+  },
 ]
