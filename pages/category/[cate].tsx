@@ -5,13 +5,30 @@ import { getPosts } from '../../lib/apis'
 import { getAllSelectItemsFromPosts } from '../../lib/apis/getAllSelectItemsFromPosts'
 import { TPost } from '../../types'
 import { getColorClassByName } from '../../lib/colors'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../../config/blog'
+import { useRouter } from 'next/router'
 
 const CatePage: NextPage<{
   posts: TPost[]
   cate: { name: string; count: number }
 }> = ({ posts, cate }) => {
+  const router = useRouter()
+  const { locale } = router
   return (
     <>
+      <NextSeo
+        title={`${cate.name} | ${CONFIG.BLOG_TITLE}`}
+        canonical={router.asPath}
+        description={`${cate.name} in morethanmin's blog`}
+        openGraph={{
+          title: `${CONFIG.BLOG_TITLE}`,
+          description: `${cate.name} in morethanmin's blog`,
+          locale,
+          type: 'website',
+          url: `${router.asPath}`,
+        }}
+      />
       <PostList
         posts={posts}
         filter={cate.name}

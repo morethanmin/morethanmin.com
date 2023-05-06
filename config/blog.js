@@ -1,5 +1,6 @@
 const CONFIG = {
   BLOG_TITLE: 'morethanmin',
+  link: 'https://morethanmin.com',
   NOTION_PAGE_ID: '',
   UTTERANCES: {
     ENABLE: true,
@@ -11,4 +12,4 @@ const CONFIG = {
   },
 }
 
-export { CONFIG }
+module.exports = { CONFIG }

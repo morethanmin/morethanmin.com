@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://morethanmin.com
+
+# Sitemaps
+Sitemap: https://morethanmin.com/sitemap.xml

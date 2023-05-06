@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useTheme } from 'next-themes'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../config/blog'
+import { useRouter } from 'next/router'
 
 const CardLayout = ({ children }: any) => {
   return (
@@ -633,9 +636,23 @@ const Me: NextPage<{ posts: Post[] }> = ({ posts }) => {
       }
     })
   }
+  const router = useRouter()
 
   return (
     <>
+      <NextSeo
+        title={`Me | ${CONFIG.BLOG_TITLE}`}
+        canonical={router.asPath}
+        description={`about morethanmin`}
+        openGraph={{
+          title: `${CONFIG.BLOG_TITLE}`,
+          description: 'about morethanmin',
+          locale: router.locale,
+          type: 'website',
+          url: `${router.asPath}`,
+          // images: [featuredImage],
+        }}
+      />
       <ListLayout>
         <div data-aos="fade-up" className="flex flex-col items-center messages">
           <div className="relative my-4 overflow-hidden rounded-full aspect-square h-30 xs:h-35 md:h-40 xs:my-8 md:mt-10">

@@ -8,6 +8,9 @@ import { NextPageWithLayout } from './_app'
 import { getAllSelectItemsFromPosts } from '../lib/apis/getAllSelectItemsFromPosts'
 import { getPosts } from '../lib/apis'
 import { TCategories } from '../types'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../config/blog'
+import { useRouter } from 'next/router'
 
 const CateCard = ({
   name,
@@ -52,23 +55,36 @@ const CateCard = ({
 }
 
 const Cates: NextPage<{ categories: TCategories }> = ({ categories }) => {
+  const router = useRouter()
   return (
-    <ListLayout>
-      {/* <div className="bg-white rounded-3xl p-4 xs:(px-10 py-8)"> */}
-      <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">
-        Category🪐
-      </h1>
-      <div className="grid grid-cols-2 gap-3 xs:gap-5 md:gap-6 pb-4 lg:pb-8 md:grid-cols-3 lg:grid-cols-4">
-        {Object.keys(categories).map((categoryName) =>
-          CateCard({
-            name: categoryName,
-            color: getColorClassByName(categoryName),
-            count: categories[categoryName],
-          })
-        )}
-      </div>
-      {/* </div> */}
-    </ListLayout>
+    <>
+      <NextSeo
+        title={`Categories | ${CONFIG.BLOG_TITLE}`}
+        canonical={router.asPath}
+        description={`categories in morethanmin's blog`}
+        openGraph={{
+          title: `${CONFIG.BLOG_TITLE}`,
+          description: `categories in morethanmin's blog`,
+          locale: router.locale,
+          type: 'website',
+          url: `${router.asPath}`,
+        }}
+      />
+      <ListLayout>
+        <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">
+          Category🪐
+        </h1>
+        <div className="grid grid-cols-2 gap-3 xs:gap-5 md:gap-6 pb-4 lg:pb-8 md:grid-cols-3 lg:grid-cols-4">
+          {Object.keys(categories).map((categoryName) =>
+            CateCard({
+              name: categoryName,
+              color: getColorClassByName(categoryName),
+              count: categories[categoryName],
+            })
+          )}
+        </div>
+      </ListLayout>
+    </>
   )
 }
 

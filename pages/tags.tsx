@@ -8,6 +8,9 @@ import { NextPageWithLayout } from './_app'
 import { getPosts } from '../lib/apis'
 import { getAllSelectItemsFromPosts } from '../lib/apis/getAllSelectItemsFromPosts'
 import { TTags } from '../types'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../config/blog'
+import { useRouter } from 'next/router'
 
 const TagCard = ({
   name,
@@ -42,20 +45,35 @@ const TagCard = ({
 }
 
 const Tags: NextPage<{ tags: TTags }> = ({ tags }) => {
+  const router = useRouter()
   return (
-    <ListLayout>
-      <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">Tags✨</h1>
-      <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 pb-4 lg:pb-8 md:grid-cols-3 lg:grid-cols-4">
-        {Object.keys(tags).map((tagName) =>
-          TagCard({
-            name: tagName,
-            color: getColorClassByName(tagName),
-            count: tags[tagName],
-          })
-        )}
-      </div>
-      {/* </div> */}
-    </ListLayout>
+    <>
+      <NextSeo
+        title={`Tags | ${CONFIG.BLOG_TITLE}`}
+        canonical={router.asPath}
+        description={`tags in morethanmin's blog`}
+        openGraph={{
+          title: `${CONFIG.BLOG_TITLE}`,
+          description: `tags in morethanmin's blog`,
+          locale: router.locale,
+          type: 'website',
+          url: `${router.asPath}`,
+          // images: [featuredImage],
+        }}
+      />
+      <ListLayout>
+        <h1 className="mb-4 text-2xl font-bold md:text-3xl lg:mb-8">Tags✨</h1>
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 pb-4 lg:pb-8 md:grid-cols-3 lg:grid-cols-4">
+          {Object.keys(tags).map((tagName) =>
+            TagCard({
+              name: tagName,
+              color: getColorClassByName(tagName),
+              count: tags[tagName],
+            })
+          )}
+        </div>
+      </ListLayout>
+    </>
   )
 }
 

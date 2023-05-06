@@ -105,11 +105,12 @@ const Friends: NextPage = () => {
   return (
     <>
       <NextSeo
-        title={`friends | ${CONFIG.BLOG_TITLE}`}
+        title={`Friends | ${CONFIG.BLOG_TITLE}`}
+        description={`morethanmin's friends`}
         openGraph={{
-          type: 'article',
+          title: `Friends | ${CONFIG.BLOG_TITLE}`,
+          type: 'website',
           locale: 'en_US',
-          title: `friends | ${CONFIG.BLOG_TITLE}`,
         }}
       />
       <ListLayout>

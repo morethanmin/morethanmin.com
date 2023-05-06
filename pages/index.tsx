@@ -13,28 +13,29 @@ import { useRouter } from 'next/router'
 import { me } from '../config/me'
 import { getPosts } from '../lib/apis'
 import { TPost } from '../types'
+import { NextSeo } from 'next-seo'
+import { CONFIG } from '../config/blog'
 
 const Home: NextPage<{ posts: TPost[] }> = ({ posts }) => {
   const mainPosts = posts.slice(0, 17)
   const router = useRouter()
   const { locale } = router
   const description = 'Home Description'
-  const featuredImage = {
-    url: `${me.site}/static/images/og.png`,
-    alt: description,
-  }
   return (
     <>
-      {/* <NextSeo
+      <NextSeo
+        title={`${CONFIG.BLOG_TITLE}`}
         canonical={router.asPath}
-        description={description}
+        description={`welcome to morethanmin's blog!`}
         openGraph={{
+          title: `${CONFIG.BLOG_TITLE}`,
           description,
           locale,
-          images: [featuredImage],
+          type: 'website',
           url: `${router.asPath}`,
+          // images: [featuredImage],
         }}
-      /> */}
+      />
       <ListLayout>
         <MediaContextProvider>
           <Media
