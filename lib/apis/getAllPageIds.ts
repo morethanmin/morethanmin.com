@@ -1,5 +1,5 @@
-import { idToUuid } from "notion-utils"
-import { ExtendedRecordMap, ID } from "notion-types"
+import { idToUuid } from 'notion-utils'
+import { ExtendedRecordMap, ID } from 'notion-types'
 
 export default function getAllPageIds(
   response: ExtendedRecordMap,
@@ -20,7 +20,7 @@ export default function getAllPageIds(
         pageSet.add(id)
       )
     })
-    pageIds = [...pageSet]
+    pageIds = [...Array.from(pageSet)]
   }
   return pageIds
 }
