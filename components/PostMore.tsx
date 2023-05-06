@@ -1,7 +1,7 @@
 import Moment from 'react-moment'
 import { FC } from 'react'
 import Link from 'next/link'
-import { Colors } from '../lib/colors'
+import { Colors, getColorClassByName } from '../lib/colors'
 import ThemedImage from './ThemedImage'
 import { TPost } from '../types'
 
@@ -46,16 +46,17 @@ const PostMore: FC<{ posts: TPost[] }> = ({ posts }) => {
                 <div className="pl-4 md:pl-6 basis-0 flex-shrink-0 flex-grow">
                   <Link
                     href="/category/[{Category}]"
-                    as={`/category/${post.category}`}
+                    as={`/category/${post.category?.[0]}`}
                     passHref
                   >
                     {/* <a> */}
                     <p
                       className={`inline-block mb-2 text-xs font-bold leading-2 ${
-                        Colors.default.text.normal // TODO: tag color
+                        Colors[getColorClassByName(post.category?.[0] || '')]
+                          .text.normal
                       } `}
                     >
-                      {post.category}
+                      {post.category?.[0]}
                     </p>
                     {/* </a> */}
                   </Link>

@@ -10,7 +10,7 @@ import type { ReactElement } from 'react'
 import { NextPageWithLayout } from '../_app'
 import Moment from 'react-moment'
 import Link from 'next/link'
-import { Colors } from '../../lib/colors'
+import { Colors, getColorClassByName } from '../../lib/colors'
 import { Share } from '../../components/Share'
 import TagsIcon from '../../assets/tags.svg'
 import Pagination from '../../components/Pagination'
@@ -26,6 +26,7 @@ import { useRouter } from 'next/router'
 import { getPostBlocks, getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
 import { NotionRenderer } from 'react-notion-x'
+import { useTheme } from 'next-themes'
 
 const PostPage: NextPage<{
   post: TPost
@@ -33,6 +34,7 @@ const PostPage: NextPage<{
   recordMap: any
   pagination: any
 }> = ({ post, recordMap, pagination, posts }) => {
+  const { resolvedTheme } = useTheme()
   // TODO: readingTime
   /*
   const { text } = readingTime(
@@ -76,15 +78,16 @@ const PostPage: NextPage<{
           <div className="mt-3 md:mt-6">
             <Link
               href="/category/[{Category}]"
-              as={`/category/${post.category}`}
+              as={`/category/${post.category?.[0]}`}
             >
               <a>
                 <p
                   className={`inline-block mb-2 text-xs font-bold text-true-gray-600 leading-2 ${
-                    Colors.default.text.normal // TODO: default 를 category 에 따라 색상 변경 (Colors[post.category.color].text.normal)
+                    Colors[getColorClassByName(post.category?.[0] || '')].text
+                      .normal
                   } `}
                 >
-                  {post.category}
+                  {post.category?.[0]}
                 </p>
               </a>
             </Link>
@@ -136,7 +139,10 @@ const PostPage: NextPage<{
         {/* {blocks.map((block) => {
           return <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
         })} */}
-        <NotionRenderer recordMap={recordMap} />
+        <NotionRenderer
+          darkMode={resolvedTheme === 'dark'}
+          recordMap={recordMap}
+        />
         <div
           className={`flex flex-col mt-8 justify-between ${
             post.thumbnail ? 'md:flex-row md:items-center' : ''
@@ -154,7 +160,7 @@ const PostPage: NextPage<{
                 <a href={`/tag/${tagName}`}>
                   <div
                     className={`${
-                      Colors['gray'].bg.msg // TODO: tag color (Colors[tag.color]?.bg.msg)
+                      Colors[getColorClassByName(tagName)].bg.msg
                     } bg-gradient-to-bl from-white/20 text-white flex items-center text-xs py-1 px-2  rounded-full whitespace-nowrap`}
                     dark="bg-gradient-to-br to-black/10"
                   >
