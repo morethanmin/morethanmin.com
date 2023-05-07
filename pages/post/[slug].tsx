@@ -25,25 +25,24 @@ import PostSeo from '../../components/PostSeo'
 import { useRouter } from 'next/router'
 import { getPostBlocks, getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
-import { useTheme } from 'next-themes'
 import { filterPosts } from '../../lib/apis/filterPosts'
 import ContentRenderer from '../../components/ContentRenderer'
+import { ExtendedRecordMap } from 'notion-types'
+import readingTime from 'reading-time'
 
 const PostPage: NextPage<{
   post: TPost
   posts: TPost[]
-  recordMap: any
+  recordMap: ExtendedRecordMap
   pagination: any
 }> = ({ post, recordMap, pagination, posts }) => {
-  const { resolvedTheme } = useTheme()
-  // TODO: readingTime
-  /*
   const { text } = readingTime(
-    blocks
-      .map((b) => b.paragraph?.text?.map((t: any) => t.text?.content))
+    Object.values(recordMap.block)
+      .map((b) => b?.value?.properties?.title?.flat())
+      .flat()
       .join('')
   )
-  */
+
   const router = useRouter()
   const { locale } = router
 
@@ -96,8 +95,7 @@ const PostPage: NextPage<{
             <div className="flex flex-row items-center mt-2 space-x-2 text-sm font-semibold text-true-gray-600 dark:text-true-gray-400">
               <Moment date={post.date} fromNow format="yyyy.MM.DD" local />
               <p>·</p>
-              {/* // TODO: Reading Time */}
-              {/* <p>{text}</p> */}
+              <p>{text}</p>
               <p>·</p>
               <p>
                 <span id="twikoo_visitors">

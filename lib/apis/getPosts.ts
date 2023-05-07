@@ -9,6 +9,7 @@ export async function getPosts() {
   const api = new NotionAPI()
 
   const response = await api.getPage(id)
+
   id = idToUuid(id)
   const collection = Object.values(response.collection)[0]?.value
   const block = response.block
