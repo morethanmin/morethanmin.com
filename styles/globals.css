@@ -39,3 +39,8 @@ img {
 .utterances {
   max-width: 960px;
 }
+
+/* TODO: why render? */
+.notion-collection-page-properties {
+  display: none;
+}
