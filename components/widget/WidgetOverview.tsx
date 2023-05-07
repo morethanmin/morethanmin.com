@@ -422,14 +422,15 @@ const OverviewPvAll = () => {
       <p
         className={`${Colors['blue']?.text.normal} animate-pulse line-clamp-1`}
       >
-        25,223 Views
+        - Views
       </p>
     )
   const pvAmount = pvAllData['pageViews'] || '-'
 
   return (
     <p className={`${Colors['blue']?.text.normal} line-clamp-1`}>
-      {pvAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Views
+      25,223 Views
+      {/* {pvAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Views */}
     </p>
   )
 }

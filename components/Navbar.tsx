@@ -1,18 +1,15 @@
 import Link from 'next/link'
-import { FC, Fragment } from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 import TagsIcon from '../assets/tags.svg'
 import CategoriesIcon from '../assets/categories.svg'
 import FriendsIcon from '../assets/friends.svg'
 import MeIcon from '../assets/me.svg'
-import TocIcon from '../assets/toc.svg'
 import MenuIcon from '../assets/menu.svg'
-import TocFillIcon from '../assets/toc_fill.svg'
 
 import { Colors } from '../lib/colors'
 import { useRouter } from 'next/router'
-import PostToc from './PostToc'
 import { CONFIG } from '../config/blog'
 
 const navigations = [
@@ -59,9 +56,8 @@ const MenuItemLink = (props: {
   )
 }
 
-const Navbar: FC<{ toc: any }> = ({ toc }) => {
+const Navbar = ({ toc }: { toc: any }) => {
   const path = useRouter().asPath
-  const isPost = path.startsWith('/post/')
   return (
     <header
       className="sticky top-0 z-50 font-bold bg-white bg-opacity-70 backdrop-filter backdrop-blur-lg backdrop-saturate-200 border-b-[0.5px] border-b-true-gray-100"
@@ -74,6 +70,7 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
           <Link href="/">{CONFIG.BLOG_TITLE}</Link>
         </div>
         <div className="flex items-center">
+          {/* // TODO: TOC */}
           {/* {isPost ? (
             <Menu>
               <Menu.Button className="flex items-center px-0 m-0 mr-6 z-50">
