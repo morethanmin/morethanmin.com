@@ -25,6 +25,7 @@ import {
   SiRedux,
   SiReduxsaga,
   SiCss3,
+  SiGoogle,
 } from '@icons-pack/react-simple-icons'
 
 export const me = {
@@ -38,7 +39,19 @@ export const me = {
     dark: '/static/images/map_dark.png',
   },
   bio: '💻 🎨 🎮 ⚡️',
-  social: [...links],
+  social: [
+    ...links,
+    {
+      url: 'mailto:morethanmin.dev@gmail.com',
+      icon: SiGmail,
+      fill: 'fill-[#DB4437]',
+      border: 'border-[#DB4437]',
+      shadow: 'shadow-pink-300',
+      text: 'text-[#DB4437]',
+      color: 'from-bg-[#DB4437] to-bg-[#DB4437]',
+      name: 'Gmail',
+    },
+  ],
   overview: [],
   education: [
     {

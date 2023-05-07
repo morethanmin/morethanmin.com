@@ -4,6 +4,7 @@ import {
   SiLinkedin,
   SiInstagram,
   SiTwitter,
+  SiFacebook,
 } from '@icons-pack/react-simple-icons'
 import { FC } from 'react'
 
@@ -48,14 +49,15 @@ export const links: readonly [
     name: 'LinkedIn',
   },
   {
-    url: 'https://instagram.com/more-dev-min',
-    icon: SiInstagram,
-    color: 'from-bg-[#C13584] to-bg-[#F56040]',
-    fill: 'fill-[#da282a]',
-    border: 'border-[#da282a]',
-    shadow: 'shadow-red-300',
-    text: 'text-[#da282a]',
-    name: 'Instagram',
+    url: 'https://www.facebook.com/people/%EC%9D%B4%EC%83%81%EB%AF%BC/pfbid0B4L2YBvSqKVkJ5JKGcUeJTGMhRj8puad8dAnbtKAVbZC7Y1zHnbLGAnym6P6thsxl/',
+    // icon: SiGoogle,
+    icon: SiFacebook,
+    fill: 'fill-[#1877F2]',
+    border: 'border-[#1877F2]',
+    shadow: 'shadow-blue-300',
+    text: 'text-[#1877F2]',
+    color: 'from-bg-[#1877F2] to-bg-[#1877F2]',
+    name: 'Facebook',
   },
   {
     url: 'https://twitter.com/more_than_min',
@@ -70,13 +72,13 @@ export const links: readonly [
     name: 'Twitter',
   },
   {
-    url: 'mailto:morethanmin.dev@gmail.com',
-    icon: SiGoogle,
-    fill: 'fill-[#DB4437]',
-    border: 'border-[#DB4437]',
-    shadow: 'shadow-pink-300',
-    text: 'text-[#DB4437]',
-    color: 'from-bg-[#DB4437] to-bg-[#DB4437]',
-    name: 'Dribbble',
+    url: 'https://instagram.com/more-dev-min',
+    icon: SiInstagram,
+    color: 'from-bg-[#C13584] to-bg-[#F56040]',
+    fill: 'fill-[#da282a]',
+    border: 'border-[#da282a]',
+    shadow: 'shadow-red-300',
+    text: 'text-[#da282a]',
+    name: 'Instagram',
   },
 ]
