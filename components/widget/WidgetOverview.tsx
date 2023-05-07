@@ -405,6 +405,7 @@ const OverviewUv = () => {
   )
 }
 
+// TODO: GA4 View event
 const OverviewPvAll = () => {
   const { data: pvAllData, error: pvAllError } = useSWRImmutable(
     '/api/page-views/all',
@@ -421,7 +422,7 @@ const OverviewPvAll = () => {
       <p
         className={`${Colors['blue']?.text.normal} animate-pulse line-clamp-1`}
       >
-        - Views
+        25,223 Views
       </p>
     )
   const pvAmount = pvAllData['pageViews'] || '-'
