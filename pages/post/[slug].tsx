@@ -25,35 +25,9 @@ import PostSeo from '../../components/PostSeo'
 import { useRouter } from 'next/router'
 import { getPostBlocks, getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
-import { NotionRenderer } from 'react-notion-x'
 import { useTheme } from 'next-themes'
 import { filterPosts } from '../../lib/apis/filterPosts'
-import dynamic from 'next/dynamic'
-import Image from 'next/image'
-
-const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then((m) => m.Code)
-)
-const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
-)
-const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
-)
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false,
-  }
-)
-const Modal = dynamic(
-  () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
-  {
-    ssr: false,
-  }
-)
+import ContentRenderer from '../../components/ContentRenderer'
 
 const PostPage: NextPage<{
   post: TPost
@@ -167,19 +141,7 @@ const PostPage: NextPage<{
         {/* {blocks.map((block) => {
           return <Fragment key={block.id}>{renderNotionBlock(block)}</Fragment>
         })} */}
-        <NotionRenderer
-          darkMode={resolvedTheme === 'dark'}
-          recordMap={recordMap}
-          components={{
-            Code,
-            Collection,
-            Equation,
-            Modal,
-            Pdf,
-            nextImage: Image,
-            nextLink: Link,
-          }}
-        />
+        <ContentRenderer recordMap={recordMap} />
         <div
           className={`flex flex-col mt-8 justify-between ${
             post.thumbnail ? 'md:flex-row md:items-center' : ''
