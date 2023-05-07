@@ -74,7 +74,7 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
           <Link href="/">{CONFIG.BLOG_TITLE}</Link>
         </div>
         <div className="flex items-center">
-          {isPost ? (
+          {/* {isPost ? (
             <Menu>
               <Menu.Button className="flex items-center px-0 m-0 mr-6 z-50">
                 {({ open }) => (!open && <TocIcon />) || <TocFillIcon />}
@@ -92,7 +92,7 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
                   className="absolute top-0 left-0 w-full h-100vh bg-true-gray-900/50 backdrop-filter backdrop-blur-sm"
                   dark="bg-true-gray-900/70"
                 >
-                  {/* <Menu.Item>
+                  <Menu.Item>
                     <div className="flex place-items-center w-full h-full">
                       <div
                         className="mx-5 w-full sm:mx-auto md:w-150 overflow-scroll bg-white rounded-3xl scrollbar-hide"
@@ -101,11 +101,11 @@ const Navbar: FC<{ toc: any }> = ({ toc }) => {
                         <PostToc blocks={toc} />
                       </div>
                     </div>
-                  </Menu.Item> */}
+                  </Menu.Item>
                 </Menu.Items>
               </Transition>
             </Menu>
-          ) : null}
+          ) : null} */}
           <nav className="flex items-center justify-center hidden space-x-5 sm:flex">
             {navigations.map((n, i) => (
               <Link href={n.link} key={i}>
