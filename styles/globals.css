@@ -42,5 +42,5 @@ img {
 
 /* TODO: why render? */
 .notion-collection-page-properties {
-  display: none;
+  display: none !important;
 }
