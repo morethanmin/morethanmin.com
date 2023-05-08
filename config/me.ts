@@ -79,7 +79,7 @@ export const me = {
   openSources: [
     {
       title: 'morethan-log',
-      authors: [{ name: 'A static blog using notion database' }],
+      authors: [{ name: 'A static blog using notion database 😎' }],
       website: 'https://morethan-log.vercel.app',
       link: 'https://github.com/morethanmin/morethan-log',
       tags: [
