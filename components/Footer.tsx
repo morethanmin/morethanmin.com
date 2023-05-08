@@ -40,10 +40,12 @@ const Footer = () => {
         <div className="flex flex-col px-6 mx-auto items-left lg:px-11 lg:w-screen-lg">
           <nav className="py-4 flex justify-between items-center">
             <Link href="/">
-              <a>
-                <FontAwesomeIcon
-                  icon={faAppleAlt}
-                  style={{ color: resolvedTheme === 'dark' ? '#fff' : '#000' }}
+              <a className="font-bold">
+                <Image
+                  src="/static/images/portrait.png"
+                  width={18}
+                  height={18}
+                  alt="morethanmin"
                 />
               </a>
             </Link>
