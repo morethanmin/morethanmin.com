@@ -31,7 +31,7 @@ import {
 export const me = {
   site: 'https://www.morethanmin.com',
   name: 'Sangmin Lee',
-  image: '/static/images/portrait.jpeg',
+  image: '/static/images/portrait.jpg',
   email: 'mailto:morethanmin.dev@gmail.com',
   location: {
     name: 'Seoul, South Korea',
