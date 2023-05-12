@@ -30,7 +30,7 @@ const PostMore: FC<{ posts: TPost[] }> = ({ posts }) => {
               isEven ? '' : 'not-last:content-DEFAULT'
             } flex-shrink-0 flex-grow-0 text-transparent select-none h-[1px] block bg-true-gray-200 mt-6 lg:mt-8 dark:bg-true-gray-700`}
           >
-            <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+            <Link href="/posts/[slug]" as={`/posts/${post.slug}`}>
               <a className="flex flex-row items-center">
                 <div className="w-26 h-26 md:(w-33 h-33) rounded-2xl overflow-hidden shrink-0">
                   <div

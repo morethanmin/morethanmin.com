@@ -150,11 +150,11 @@ const PostPage: NextPage<{
             <TagsIcon />
             {post.tags?.map((tagName: any) => (
               <Link
-                href={`/tag/${tagName}`}
-                as={`/tag/${tagName}`}
+                href={`/tags/${tagName}`}
+                as={`/tags/${tagName}`}
                 key={tagName}
               >
-                <a href={`/tag/${tagName}`}>
+                <a href={`/tags/${tagName}`}>
                   <div
                     className={`${
                       Colors[getColorClassByName(tagName)].bg.msg

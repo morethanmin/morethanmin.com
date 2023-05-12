@@ -118,7 +118,7 @@ const PostList: NextPage<PostListProps> = ({
                   data-aos="fade-up"
                   // {index === 0 ? `` : `fade-up`}
                 >
-                  <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                  <Link href="/posts/[slug]" as={`/posts/${post.slug}`}>
                     <a className="w-full">
                       <div
                         className={`bg-white rounded-3xl overflow-hidden shadow-lg md:shadow-none shadow-true-gray-200 ${size.cardSize} flex flex-col group transition duration-500 ease-in-out transform-gpu mobile-hover:hover:scale-95

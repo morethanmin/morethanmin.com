@@ -23,7 +23,7 @@ const TagCard = ({
   count: number
 }) => {
   return (
-    <Link href="/tag/[name]" as={`/tag/${name}`} key={name}>
+    <Link href="/tags/[name]" as={`/tags/${name}`} key={name}>
       <a>
         <div
           className={`${

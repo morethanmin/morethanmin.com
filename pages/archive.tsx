@@ -61,7 +61,7 @@ const Archive: NextPage<{ posts: TPost[] }> = ({ posts }) => {
                 key={post.id}
                 before={`content-DEFAULT flex-shrink-0 flex-grow-0 text-transparent select-none h-[1px] block bg-true-gray-200 mb-8`}
               >
-                <Link href="/post/[slug]" as={`/post/${post.slug}`}>
+                <Link href="/posts/[slug]" as={`/posts/${post.slug}`}>
                   <a className="flex flex-row lg:items-center">
                     <div className="aspect-square md:aspect-video h-26 md:h-37 lg:h-41.5 rounded-2xl overflow-hidden shrink-0">
                       <div
