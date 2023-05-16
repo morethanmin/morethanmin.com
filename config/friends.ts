@@ -11,11 +11,6 @@ export const friends: FriendType[] = [
     img: 'https://avatars.githubusercontent.com/u/40540101?v=4',
   },
   {
-    url: 'https://nahwasa.com/',
-    name: 'nahwasa',
-    img: 'https://avatars.githubusercontent.com/u/49299283?v=4',
-  },
-  {
     url: 'https://octoping-blog.vercel.app/',
     name: 'Octoping',
     img: 'https://avatars.githubusercontent.com/u/53991994?v=4',
