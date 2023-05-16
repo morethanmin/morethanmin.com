@@ -55,4 +55,9 @@ export const friends: FriendType[] = [
     name: 'gd054',
     img: '/static/images/friends/gd054.jpg',
   },
+  {
+    url: 'https://github.com/MarlinDiary',
+    name: 'MarlinDiary',
+    img: 'https://avatars.githubusercontent.com/u/50492264?v=4',
+  },
 ]
