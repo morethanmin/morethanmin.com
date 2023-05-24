@@ -217,7 +217,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prev = filteredPosts[pageIndex - 1] || null
   const next = filteredPosts[pageIndex + 1] || null
 
-  const recordMap = await getPostBlocks(post.id!)
+  if (!post?.id) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/',
+      },
+    }
+  }
+  const recordMap = await getPostBlocks(post.id)
 
   // TODO: blur
   /*
