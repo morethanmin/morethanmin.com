@@ -42,7 +42,6 @@ type Props = {
 
 const ContentRenderer = ({ recordMap }: Props) => {
   const { resolvedTheme } = useTheme()
-
   return (
     <NotionRenderer
       darkMode={resolvedTheme === 'dark'}

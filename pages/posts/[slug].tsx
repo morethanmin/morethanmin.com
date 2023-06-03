@@ -26,9 +26,14 @@ import { useRouter } from 'next/router'
 import { getPostBlocks, getPosts } from '../../lib/apis'
 import { TPost } from '../../types'
 import { filterPosts } from '../../lib/apis/filterPosts'
-import ContentRenderer from '../../components/ContentRenderer'
 import { ExtendedRecordMap } from 'notion-types'
 import readingTime from 'reading-time'
+import dynamic from 'next/dynamic'
+
+const ContentRenderer = dynamic(
+  () => import('../../components/ContentRenderer'),
+  { ssr: false }
+)
 
 const PostPage: NextPage<{
   post: TPost
